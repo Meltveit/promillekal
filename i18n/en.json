@@ -1,0 +1,106 @@
+{
+    "meta": {
+      "title": "Bacometer - Calculate Your Blood Alcohol Content (BAC)",
+      "description": "Calculate your blood alcohol content (BAC) accurately based on your gender, weight, drinks consumed, and time. Free and easy to use BAC calculator."
+    },
+    "nav": {
+      "bac": "BAC Calculator",
+      "cannabis": "Cannabis Calculator",
+      "alcoholEffects": "Alcohol Effects",
+      "about": "About"
+    },
+    "hero": {
+      "title": "Calculate Your Blood Alcohol Content (BAC)",
+      "subtitle": "Find out how much alcohol is in your system and when it's safe to drive."
+    },
+    "calculator": {
+      "title": "Blood Alcohol Content Calculator",
+      "gender": "Gender",
+      "selectGender": "Select",
+      "male": "Male",
+      "female": "Female",
+      "age": "Age",
+      "weight": "Weight (kg)",
+      "height": "Height (cm)",
+      "drinks": "Drinks Consumed",
+      "drinkType": "Type",
+      "selectType": "Select",
+      "beer": "Beer (5%)",
+      "wine": "Wine (12%)",
+      "spirits": "Spirits (40%)",
+      "custom": "Custom",
+      "alcoholPercent": "Alcohol %",
+      "size": "Size (ml)",
+      "time": "Time consumed",
+      "addDrink": "Add Another Drink",
+      "removeDrink": "Remove",
+      "currentTime": "Current Time",
+      "metabolism": "Metabolism",
+      "normalMetabolism": "Normal",
+      "slowMetabolism": "Slow",
+      "fastMetabolism": "Fast",
+      "calculate": "Calculate BAC"
+    },
+    "results": {
+      "title": "Your Results",
+      "based": "Based on your inputs, your current Blood Alcohol Content (BAC) is",
+      "legalLimit": "The legal driving limit in most countries is 0.5‰ (0.05%).",
+      "soberTime": "You will be sober in approximately",
+      "hours": "hours and",
+      "minutes": "minutes",
+      "safeToDrive": "It would be safe to drive at approximately",
+      "disclaimer": "Disclaimer: This calculator provides an estimate only and should not be used as a definitive measure of your blood alcohol content. Many factors can affect your BAC including medications, health conditions, and individual metabolism variations. Always err on the side of caution and never drive if you've been drinking."
+    },
+    "status": {
+      "sober": "Sober",
+      "mild": "Mild Effects",
+      "impaired": "Impaired - Do Not Drive",
+      "significant": "Significantly Impaired",
+      "severe": "Severely Impaired",
+      "lifeThreatening": "Life-Threatening"
+    },
+    "info": {
+      "title": "Understanding BAC Levels",
+      "level1": {
+        "range": "0.00‰ - 0.20‰",
+        "title": "Sober to Mild Effects",
+        "description": "Little to no effect for most people. Slight mood elevation and relaxation may be felt."
+      },
+      "level2": {
+        "range": "0.20‰ - 0.50‰",
+        "title": "Mild Impairment",
+        "description": "Relaxation, slight body warmth, mild mood enhancement. Slight decline in visual functions and ability to multitask."
+      },
+      "level3": {
+        "range": "0.50‰ - 0.80‰",
+        "title": "Significant Impairment",
+        "description": "Reduced coordination, decreased ability to track moving objects. Reduced ability to detect danger. Judgment and self-control are reduced."
+      },
+      "level4": {
+        "range": "0.80‰ - 1.50‰",
+        "title": "Severe Impairment",
+        "description": "Poor muscle coordination, difficulty with balance. Slurred speech, poor judgment, impaired memory and comprehension."
+      },
+      "level5": {
+        "range": "1.50‰ - 3.00‰",
+        "title": "Very Dangerous",
+        "description": "Major loss of balance. Significantly impaired vision, awareness, and judgment. Nausea, possible vomiting. Risk of losing consciousness."
+      },
+      "level6": {
+        "range": "3.00‰+",
+        "title": "Life-Threatening",
+        "description": "Severe risk of alcohol poisoning. Unconsciousness. Risk of death due to respiratory depression. Emergency medical attention required."
+      }
+    },
+    "footer": {
+      "description": "A free tool to estimate blood alcohol content and help promote responsible drinking decisions.",
+      "quickLinks": "Quick Links",
+      "languages": "Languages",
+      "copyright": "All Rights Reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    },
+    "ads": {
+      "advertisement": "Advertisement"
+    }
+  }

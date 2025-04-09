@@ -1,0 +1,106 @@
+{
+    "meta": {
+      "title": "Bacometer - Beregn Promillen Din",
+      "description": "Beregn blodalkoholkonsentrasjonen (promillen) din nøyaktig basert på kjønn, vekt, inntatte drikker og tid. Gratis og enkel promillekalkulator."
+    },
+    "nav": {
+      "bac": "Promillekalkulator",
+      "cannabis": "Cannabis-kalkulator",
+      "alcoholEffects": "Alkoholeffekter",
+      "about": "Om oss"
+    },
+    "hero": {
+      "title": "Beregn Promillen Din",
+      "subtitle": "Finn ut hvor mye alkohol du har i kroppen og når det er trygt å kjøre."
+    },
+    "calculator": {
+      "title": "Promillekalkulator",
+      "gender": "Kjønn",
+      "selectGender": "Velg",
+      "male": "Mann",
+      "female": "Kvinne",
+      "age": "Alder",
+      "weight": "Vekt (kg)",
+      "height": "Høyde (cm)",
+      "drinks": "Konsumerte drikker",
+      "drinkType": "Type",
+      "selectType": "Velg",
+      "beer": "Øl (5%)",
+      "wine": "Vin (12%)",
+      "spirits": "Brennevin (40%)",
+      "custom": "Egendefinert",
+      "alcoholPercent": "Alkohol %",
+      "size": "Størrelse (ml)",
+      "time": "Tidspunkt konsumert",
+      "addDrink": "Legg til en drink",
+      "removeDrink": "Fjern",
+      "currentTime": "Nåværende tid",
+      "metabolism": "Stoffskifte",
+      "normalMetabolism": "Normal",
+      "slowMetabolism": "Langsom",
+      "fastMetabolism": "Rask",
+      "calculate": "Beregn promille"
+    },
+    "results": {
+      "title": "Dine resultater",
+      "based": "Basert på inndataene dine er din nåværende promille",
+      "legalLimit": "Lovlig grense for kjøring i Norge er 0,2‰.",
+      "soberTime": "Du vil være edru om ca.",
+      "hours": "timer og",
+      "minutes": "minutter",
+      "safeToDrive": "Det vil være trygt å kjøre ca. klokken",
+      "disclaimer": "Ansvarsfraskrivelse: Denne kalkulatoren gir kun et estimat og bør ikke brukes som et definitivt mål på din promille. Mange faktorer kan påvirke promillen, inkludert medisiner, helsetilstand og individuelle variasjoner i stoffskiftet. Vær alltid på den sikre siden og kjør aldri hvis du har drukket."
+    },
+    "status": {
+      "sober": "Edru",
+      "mild": "Milde effekter",
+      "impaired": "Påvirket - Ikke kjør",
+      "significant": "Betydelig påvirket",
+      "severe": "Alvorlig påvirket",
+      "lifeThreatening": "Livstruende"
+    },
+    "info": {
+      "title": "Forstå promillenivåer",
+      "level1": {
+        "range": "0,00‰ - 0,20‰",
+        "title": "Edru til milde effekter",
+        "description": "Liten eller ingen effekt for de fleste. Lett humørheving og avslapping kan merkes."
+      },
+      "level2": {
+        "range": "0,20‰ - 0,50‰",
+        "title": "Mild påvirkning",
+        "description": "Avslapping, lett kroppsvarme, mildt humørløft. Svak nedgang i synsfunksjoner og evne til multitasking."
+      },
+      "level3": {
+        "range": "0,50‰ - 0,80‰",
+        "title": "Betydelig påvirkning",
+        "description": "Redusert koordinasjon, nedsatt evne til å følge bevegelige objekter. Redusert evne til å oppdage fare. Dømmekraft og selvkontroll er redusert."
+      },
+      "level4": {
+        "range": "0,80‰ - 1,50‰",
+        "title": "Alvorlig påvirkning",
+        "description": "Dårlig muskelkoordinasjon, vanskeligheter med balanse. Sløret tale, dårlig dømmekraft, svekket hukommelse og forståelse."
+      },
+      "level5": {
+        "range": "1,50‰ - 3,00‰",
+        "title": "Svært farlig",
+        "description": "Stort tap av balanse. Betydelig svekket syn, bevissthet og dømmekraft. Kvalme, mulig oppkast. Risiko for bevisstløshet."
+      },
+      "level6": {
+        "range": "3,00‰+",
+        "title": "Livstruende",
+        "description": "Alvorlig risiko for alkoholforgiftning. Bevisstløshet. Risiko for død på grunn av respirasjonsdepresjon. Akutt medisinsk hjelp nødvendig."
+      }
+    },
+    "footer": {
+      "description": "Et gratis verktøy for å estimere promille og fremme ansvarlige drikkebeslutninger.",
+      "quickLinks": "Hurtigkoblinger",
+      "languages": "Språk",
+      "copyright": "Alle rettigheter reservert.",
+      "privacy": "Personvern",
+      "terms": "Bruksvilkår"
+    },
+    "ads": {
+      "advertisement": "Annonse"
+    }
+  }
