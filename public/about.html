@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.aboutTitle">About Bacometer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" data-i18n="meta.aboutDescription" content="Learn about Bacometer, the free BAC calculator tool for responsible drinking. How the calculator works and information about our mission.">
+    <meta name="keywords" content="BAC calculator, blood alcohol content, alcohol calculator, promille kalkulator, bacometer">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="About Bacometer">
+    <meta property="og:description" content="Learn about Bacometer, the free BAC calculator tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bacometer.com/about">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bacometer.com/about">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://bacometer.com/about">
+    <link rel="alternate" hreflang="no" href="https://bacometer.com/no/about">
+    <link rel="alternate" hreflang="es" href="https://bacometer.com/es/about">
+    <link rel="alternate" hreflang="da" href="https://bacometer.com/dk/about">
+    <link rel="alternate" hreflang="sv" href="https://bacometer.com/se/about">
+    <link rel="alternate" hreflang="fi" href="https://bacometer.com/fi/about">
+    <link rel="alternate" hreflang="nl" href="https://bacometer.com/nl/about">
+    <link rel="alternate" hreflang="de" href="https://bacometer.com/de/about">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    
+    <!-- i18next Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.16/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.4.1/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2602658229657216" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1 data-i18n="nav.bac">BAC Calculator</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                    <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                    <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                    <li><a href="/about.html" class="active" data-i18n="nav.about">About</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="no">Norsk</option>
+                    <option value="es">Español</option>
+                    <option value="dk">Dansk</option>
+                    <option value="se">Svenska</option>
+                    <option value="fi">Suomi</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 data-i18n="about.title">About Bacometer</h2>
+                <p data-i18n="about.subtitle">Learn about our mission and calculator</p>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Top -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="content-section">
+            <div class="container">
+                <div class="content-box">
+                    <h3 data-i18n="about.whatIsTitle">What is Bacometer?</h3>
+                    <p data-i18n="about.whatIsPara1">Bacometer is a free online tool designed to help individuals estimate their blood alcohol content (BAC) based on their personal characteristics and drinking patterns. Our goal is to promote responsible drinking by providing educational information about alcohol's effects on the body.</p>
+                    <p data-i18n="about.whatIsPara2">Whether you're wondering when it might be safe to drive after consuming alcohol, or simply curious about how your body processes alcohol, Bacometer provides a scientifically-based estimation to help guide your decisions.</p>
+                    
+                    <h3 data-i18n="about.howItWorksTitle">How the Calculator Works</h3>
+                    <p data-i18n="about.howItWorksPara1">Our BAC calculator uses the Widmark formula, which is a scientifically validated method for estimating blood alcohol concentration. The calculation takes into account several important factors:</p>
+                    <ul>
+                        <li data-i18n="about.factor1">Your gender (which affects the water content in your body)</li>
+                        <li data-i18n="about.factor2">Your weight (which determines the volume of distribution for alcohol)</li>
+                        <li data-i18n="about.factor3">The number of alcoholic drinks consumed</li>
+                        <li data-i18n="about.factor4">The alcohol percentage of each drink</li>
+                        <li data-i18n="about.factor5">The volume of each drink</li>
+                        <li data-i18n="about.factor6">The time elapsed since consumption</li>
+                        <li data-i18n="about.factor7">Your estimated metabolism rate</li>
+                    </ul>
+                    <p data-i18n="about.howItWorksPara2">The calculator first determines the total amount of pure alcohol consumed in grams. Then, it calculates how this alcohol is distributed throughout the body's water content. Finally, it subtracts the amount of alcohol that your liver has processed over time.</p>
+                    
+                    <h3 data-i18n="about.accuracyTitle">Accuracy and Limitations</h3>
+                    <p data-i18n="about.accuracyPara1">While our calculator provides a reasonable estimate of BAC based on scientific principles, it's important to understand its limitations:</p>
+                    <ul>
+                        <li data-i18n="about.limitation1">Individual metabolic rates can vary significantly</li>
+                        <li data-i18n="about.limitation2">Food consumption can slow alcohol absorption</li>
+                        <li data-i18n="about.limitation3">Medical conditions can affect how your body processes alcohol</li>
+                        <li data-i18n="about.limitation4">Medications can interact with alcohol and affect its processing</li>
+                        <li data-i18n="about.limitation5">The calculator cannot account for all biological variations</li>
+                    </ul>
+                    <p data-i18n="about.accuracyPara2">For these reasons, you should never use Bacometer as the sole basis for deciding whether to drive or operate machinery. Always err on the side of caution when it comes to alcohol consumption.</p>
+                    
+                    <h3 data-i18n="about.ourMissionTitle">Our Mission</h3>
+                    <p data-i18n="about.ourMissionPara1">At Bacometer, our mission is to provide free, accessible education about alcohol's effects on the body. We believe that by understanding how alcohol affects you personally, you can make more informed decisions about your consumption.</p>
+                    <p data-i18n="about.ourMissionPara2">We also strive to promote responsible drinking habits and reduce alcohol-related incidents by helping people understand when they've had too much to drive or engage in other risky activities.</p>
+                    
+                    <h3 data-i18n="about.contactTitle">Contact Us</h3>
+                    <p data-i18n="about.contactPara">If you have questions, suggestions, or feedback about Bacometer, please reach out to us at:</p>
+                    <p><a href="mailto:contact@bacometer.com">contact@bacometer.com</a></p>
+                    
+                    <div class="disclaimer">
+                        <h4 data-i18n="about.disclaimerTitle">Important Disclaimer</h4>
+                        <p data-i18n="about.disclaimerText">Bacometer is provided for educational and informational purposes only. It is not intended to be a substitute for professional medical advice, diagnosis, or treatment. Never rely solely on Bacometer to determine whether you are fit to drive, operate machinery, or engage in any activity that requires full cognitive function. Always consult with a healthcare professional regarding any medical questions or concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Bottom -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bacometer</h3>
+                    <p data-i18n="footer.description">A free tool to estimate blood alcohol content and help promote responsible drinking decisions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                        <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                        <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.languages">Languages</h3>
+                    <ul class="language-list">
+                        <li><a href="/about.html">English</a></li>
+                        <li><a href="/no/about.html">Norsk</a></li>
+                        <li><a href="/es/about.html">Español</a></li>
+                        <li><a href="/dk/about.html">Dansk</a></li>
+                        <li><a href="/se/about.html">Svenska</a></li>
+                        <li><a href="/fi/about.html">Suomi</a></li>
+                        <li><a href="/nl/about.html">Nederlands</a></li>
+                        <li><a href="/de/about.html">Deutsch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year">2025</span> Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
+                <p><a href="/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- i18next script -->
+    <script src="/js/i18n.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

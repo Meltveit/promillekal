@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.effectsTitle">Alcohol Effects - Bacometer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" data-i18n="meta.effectsDescription" content="Learn about the effects of alcohol on the body at different BAC levels. Information about short and long-term effects and responsible drinking.">
+    <meta name="keywords" content="alcohol effects, BAC effects, blood alcohol content effects, alcohol health, drinking effects">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Alcohol Effects - Bacometer">
+    <meta property="og:description" content="Learn about the effects of alcohol on the body at different BAC levels.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bacometer.com/alcohol-effects">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bacometer.com/alcohol-effects">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://bacometer.com/alcohol-effects">
+    <link rel="alternate" hreflang="no" href="https://bacometer.com/no/alcohol-effects">
+    <link rel="alternate" hreflang="es" href="https://bacometer.com/es/alcohol-effects">
+    <link rel="alternate" hreflang="da" href="https://bacometer.com/dk/alcohol-effects">
+    <link rel="alternate" hreflang="sv" href="https://bacometer.com/se/alcohol-effects">
+    <link rel="alternate" hreflang="fi" href="https://bacometer.com/fi/alcohol-effects">
+    <link rel="alternate" hreflang="nl" href="https://bacometer.com/nl/alcohol-effects">
+    <link rel="alternate" hreflang="de" href="https://bacometer.com/de/alcohol-effects">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    
+    <!-- i18next Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.16/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.4.1/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2602658229657216" crossorigin="anonymous"></script>
+    
+    <style>
+        .effects-timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .bac-marker {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .bac-value-bubble {
+            flex: 0 0 80px;
+            height: 80px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .warning .bac-value-bubble {
+            background-color: var(--warning-color);
+        }
+        
+        .danger .bac-value-bubble {
+            background-color: var(--danger-color);
+        }
+        
+        .bac-effects {
+            flex: 1;
+            background-color: var(--light-grey);
+            padding: 20px;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .bac-effects:before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid var(--light-grey);
+        }
+        
+        .tab-container {
+            margin: 30px 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+        
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .reference-list {
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 30px;
+            padding-top: 20px;
+        }
+        
+        .reference-list ol {
+            padding-left: 20px;
+        }
+        
+        .reference-list li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1 data-i18n="nav.bac">BAC Calculator</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                    <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                    <li><a href="/alcohol-effects.html" class="active" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                    <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="no">Norsk</option>
+                    <option value="es">Español</option>
+                    <option value="dk">Dansk</option>
+                    <option value="se">Svenska</option>
+                    <option value="fi">Suomi</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 data-i18n="effects.title">Effects of Alcohol on the Body</h2>
+                <p data-i18n="effects.subtitle">Understanding how alcohol affects your mind and body</p>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Top -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="content-section">
+            <div class="container">
+                <div class="content-box">
+                    <div class="tab-container">
+                        <div class="tab-buttons">
+                            <button class="tab-button active" data-tab="immediate-effects" data-i18n="effects.tabs.immediate">Immediate Effects</button>
+                            <button class="tab-button" data-tab="long-term-effects" data-i18n="effects.tabs.longTerm">Long-term Effects</button>
+                            <button class="tab-button" data-tab="responsible-drinking" data-i18n="effects.tabs.responsible">Responsible Drinking</button>
+                        </div>
+                        
+                        <div id="immediate-effects" class="tab-content active">
+                            <h3 data-i18n="effects.immediateTitle">Immediate Effects of Alcohol by BAC Level</h3>
+                            <p data-i18n="effects.immediateIntro">Blood Alcohol Content (BAC) is a measure of the amount of alcohol in your bloodstream, expressed as a percentage. As your BAC rises, alcohol's effects on your mind and body become more pronounced. Below is a timeline of effects at different BAC levels:</p>
+                            
+                            <div class="effects-timeline">
+                                <div class="bac-marker">
+                                    <div class="bac-value-bubble">0.02‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level1Title">Slight Effects</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level1Point1">Slight mood elevation</li>
+                                            <li data-i18n="effects.level1Point2">Mild relaxation</li>
+                                            <li data-i18n="effects.level1Point3">Slightly warmer body temperature</li>
+                                            <li data-i18n="effects.level1Point4">Minimal cognitive or motor skill effects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker">
+                                    <div class="bac-value-bubble">0.05‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level2Title">Relaxation</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level2Point1">Increased relaxation</li>
+                                            <li data-i18n="effects.level2Point2">Mild euphoria possible</li>
+                                            <li data-i18n="effects.level2Point3">Slightly impaired judgment and memory</li>
+                                            <li data-i18n="effects.level2Point4">Reduced inhibition</li>
+                                            <li data-i18n="effects.level2Point5">Slightly impaired reaction time</li>
+                                            <li data-i18n="effects.legal">Legal driving limit in many European countries</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker warning">
+                                    <div class="bac-value-bubble">0.08‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level3Title">Impairment</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level3Point1">Impaired coordination and balance</li>
+                                            <li data-i18n="effects.level3Point2">Clearly reduced reaction time</li>
+                                            <li data-i18n="effects.level3Point3">Reduced concentration and short-term memory</li>
+                                            <li data-i18n="effects.level3Point4">Decreased visual function and peripheral vision</li>
+                                            <li data-i18n="effects.level3Point5">Reduced ability to process information</li>
+                                            <li data-i18n="effects.level3Point6">Impaired judgment</li>
+                                            <li data-i18n="effects.legal2">Legal driving limit in the US and UK</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker warning">
+                                    <div class="bac-value-bubble">0.10‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level4Title">Significant Impairment</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level4Point1">Clear deterioration of reaction time and control</li>
+                                            <li data-i18n="effects.level4Point2">Slurred speech</li>
+                                            <li data-i18n="effects.level4Point3">Poor coordination</li>
+                                            <li data-i18n="effects.level4Point4">Slowed thinking</li>
+                                            <li data-i18n="effects.level4Point5">Reduced fine motor control</li>
+                                            <li data-i18n="effects.level4Point6">Euphoria may be intense</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker danger">
+                                    <div class="bac-value-bubble">0.15‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level5Title">Severe Impairment</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level5Point1">Substantial impairment in all physical and mental functions</li>
+                                            <li data-i18n="effects.level5Point2">Major loss of balance</li>
+                                            <li data-i18n="effects.level5Point3">Vomiting may occur (unless tolerance is developed)</li>
+                                            <li data-i18n="effects.level5Point4">Significant risk of blackout</li>
+                                            <li data-i18n="effects.level5Point5">Potential for dangerous behavior</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker danger">
+                                    <div class="bac-value-bubble">0.25‰</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level6Title">Alcohol Poisoning Risk</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level6Point1">All mental, physical, and sensory functions severely impaired</li>
+                                            <li data-i18n="effects.level6Point2">Increased risk of asphyxiation from choking on vomit</li>
+                                            <li data-i18n="effects.level6Point3">Potential for alcohol poisoning</li>
+                                            <li data-i18n="effects.level6Point4">Blackouts likely</li>
+                                            <li data-i18n="effects.level6Point5">Loss of consciousness may occur</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="bac-marker danger">
+                                    <div class="bac-value-bubble">0.35‰+</div>
+                                    <div class="bac-effects">
+                                        <h4 data-i18n="effects.level7Title">Life-Threatening</h4>
+                                        <ul>
+                                            <li data-i18n="effects.level7Point1">Loss of consciousness</li>
+                                            <li data-i18n="effects.level7Point2">Danger of respiratory arrest</li>
+                                            <li data-i18n="effects.level7Point3">Possible death</li>
+                                            <li data-i18n="effects.level7Point4">Medical emergency requiring immediate attention</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert-box">
+                                <h4 data-i18n="effects.emergencyTitle">Recognizing Alcohol Poisoning</h4>
+                                <p data-i18n="effects.emergencyText">Alcohol poisoning is a serious and potentially life-threatening condition. Call emergency services immediately if someone shows these signs:</p>
+                                <ul>
+                                    <li data-i18n="effects.poisoning1">Confusion, stupor</li>
+                                    <li data-i18n="effects.poisoning2">Vomiting</li>
+                                    <li data-i18n="effects.poisoning3">Seizures</li>
+                                    <li data-i18n="effects.poisoning4">Slow breathing (less than 8 breaths per minute)</li>
+                                    <li data-i18n="effects.poisoning5">Irregular breathing (10 seconds or more between breaths)</li>
+                                    <li data-i18n="effects.poisoning6">Blue-tinged or pale skin</li>
+                                    <li data-i18n="effects.poisoning7">Low body temperature (hypothermia)</li>
+                                    <li data-i18n="effects.poisoning8">Unconsciousness/passing out</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div id="long-term-effects" class="tab-content">
+                            <h3 data-i18n="effects.longTermTitle">Long-term Effects of Alcohol Consumption</h3>
+                            <p data-i18n="effects.longTermIntro">Regular heavy drinking and alcohol dependency can lead to serious health problems over time. The following are potential long-term effects of excessive alcohol consumption:</p>
+                            
+                            <h4 data-i18n="effects.brainTitle">Brain and Nervous System</h4>
+                            <ul>
+                                <li data-i18n="effects.brain1">Brain damage and cognitive impairment</li>
+                                <li data-i18n="effects.brain2">Increased risk of dementia</li>
+                                <li data-i18n="effects.brain3">Wernicke-Korsakoff syndrome (a serious neurological disorder)</li>
+                                <li data-i18n="effects.brain4">Depression and anxiety</li>
+                                <li data-i18n="effects.brain5">Peripheral neuropathy (nerve damage)</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.liverTitle">Liver</h4>
+                            <ul>
+                                <li data-i18n="effects.liver1">Fatty liver disease</li>
+                                <li data-i18n="effects.liver2">Alcoholic hepatitis</li>
+                                <li data-i18n="effects.liver3">Liver fibrosis</li>
+                                <li data-i18n="effects.liver4">Cirrhosis (irreversible scarring)</li>
+                                <li data-i18n="effects.liver5">Liver cancer</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.heartTitle">Heart and Circulatory System</h4>
+                            <ul>
+                                <li data-i18n="effects.heart1">High blood pressure</li>
+                                <li data-i18n="effects.heart2">Cardiomyopathy (stretching and drooping of heart muscle)</li>
+                                <li data-i18n="effects.heart3">Irregular heartbeat (arrhythmias)</li>
+                                <li data-i18n="effects.heart4">Increased risk of stroke</li>
+                                <li data-i18n="effects.heart5">Heart failure</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.digestiveTitle">Digestive System</h4>
+                            <ul>
+                                <li data-i18n="effects.digestive1">Inflammation of the pancreas (pancreatitis)</li>
+                                <li data-i18n="effects.digestive2">Increased risk of mouth, throat, esophagus, colon and rectum cancers</li>
+                                <li data-i18n="effects.digestive3">Gastritis (stomach inflammation)</li>
+                                <li data-i18n="effects.digestive4">Ulcers</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.immuneTitle">Immune System</h4>
+                            <ul>
+                                <li data-i18n="effects.immune1">Weakened immune system, making you more susceptible to diseases</li>
+                                <li data-i18n="effects.immune2">Slower healing from wounds</li>
+                                <li data-i18n="effects.immune3">Increased vulnerability to pneumonia and tuberculosis</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.otherTitle">Other Effects</h4>
+                            <ul>
+                                <li data-i18n="effects.other1">Malnutrition and vitamin deficiencies</li>
+                                <li data-i18n="effects.other2">Osteoporosis (thinning bones)</li>
+                                <li data-i18n="effects.other3">Sexual dysfunction</li>
+                                <li data-i18n="effects.other4">Fertility problems</li>
+                                <li data-i18n="effects.other5">During pregnancy: risk of miscarriage, stillbirth, or fetal alcohol spectrum disorders</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.socialTitle">Social and Mental Health Effects</h4>
+                            <ul>
+                                <li data-i18n="effects.social1">Relationship problems</li>
+                                <li data-i18n="effects.social2">Work or school problems</li>
+                                <li data-i18n="effects.social3">Increased risk of unemployment</li>
+                                <li data-i18n="effects.social4">Financial difficulties</li>
+                                <li data-i18n="effects.social5">Higher risk of violence and accidents</li>
+                                <li data-i18n="effects.social6">Legal problems</li>
+                            </ul>
+                        </div>
+                        
+                        <div id="responsible-drinking" class="tab-content">
+                            <h3 data-i18n="effects.responsibleTitle">Responsible Drinking Guidelines</h3>
+                            <p data-i18n="effects.responsibleIntro">If you choose to drink alcohol, doing so responsibly can help minimize risks to your health and safety. Here are some guidelines for responsible drinking:</p>
+                            
+                            <h4 data-i18n="effects.limitsTitle">Know Your Limits</h4>
+                            <ul>
+                                <li data-i18n="effects.limits1">Many health organizations recommend no more than 1-2 standard drinks per day</li>
+                                <li data-i18n="effects.limits2">Consider having alcohol-free days each week</li>
+                                <li data-i18n="effects.limits3">Be aware that alcohol content varies by beverage type and serving size</li>
+                                <li data-i18n="effects.limits4">Remember that individual tolerance varies based on body size, gender, metabolism, and other factors</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.drinkingTipsTitle">Safe Drinking Tips</h4>
+                            <ul>
+                                <li data-i18n="effects.drinkingTips1">Eat before and while drinking alcohol</li>
+                                <li data-i18n="effects.drinkingTips2">Drink water between alcoholic beverages to stay hydrated</li>
+                                <li data-i18n="effects.drinkingTips3">Sip your drink slowly rather than gulping or taking shots</li>
+                                <li data-i18n="effects.drinkingTips4">Count your drinks and set a limit in advance</li>
+                                <li data-i18n="effects.drinkingTips5">Avoid drinking games and "keeping up" with others</li>
+                                <li data-i18n="effects.drinkingTips6">Be aware of drink tampering and never leave your drink unattended</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.dontDrinkTitle">When Not to Drink</h4>
+                            <ul>
+                                <li data-i18n="effects.dontDrink1">When driving or planning to drive</li>
+                                <li data-i18n="effects.dontDrink2">When operating machinery or tools</li>
+                                <li data-i18n="effects.dontDrink3">When taking medications that interact with alcohol</li>
+                                <li data-i18n="effects.dontDrink4">When pregnant or trying to conceive</li>
+                                <li data-i18n="effects.dontDrink5">When you have certain medical conditions</li>
+                                <li data-i18n="effects.dontDrink6">If you have a personal or family history of alcohol use disorder</li>
+                                <li data-i18n="effects.dontDrink7">When you're feeling depressed or using alcohol to cope with problems</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.planningTitle">Planning Ahead</h4>
+                            <ul>
+                                <li data-i18n="effects.planning1">Designate a non-drinking driver</li>
+                                <li data-i18n="effects.planning2">Plan for safe transportation home (taxi, rideshare, public transit)</li>
+                                <li data-i18n="effects.planning3">Let someone know your plans</li>
+                                <li data-i18n="effects.planning4">Stay with trusted friends</li>
+                                <li data-i18n="effects.planning5">Have a backup plan if things don't go as expected</li>
+                            </ul>
+                            
+                            <div class="alert-box">
+                                <h4 data-i18n="effects.helpTitle">Getting Help</h4>
+                                <p data-i18n="effects.helpText">If you're concerned about your drinking habits or those of someone you care about, consider speaking with a healthcare provider. Many resources are available to help, including:</p>
+                                <ul>
+                                    <li data-i18n="effects.help1">Support groups (like Alcoholics Anonymous)</li>
+                                    <li data-i18n="effects.help2">Addiction counselors</li>
+                                    <li data-i18n="effects.help3">Helplines</li>
+                                    <li data-i18n="effects.help4">Treatment programs</li>
+                                </ul>
+                                <p data-i18n="effects.helpClosing">Seeking help is a sign of strength, not weakness.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reference-list">
+                        <h4 data-i18n="effects.referencesTitle">References and Further Reading</h4>
+                        <ol>
+                            <li>National Institute on Alcohol Abuse and Alcoholism. (2018). Alcohol's Effects on the Body. <a href="https://www.niaaa.nih.gov/alcohols-effects-health/alcohols-effects-body" target="_blank">https://www.niaaa.nih.gov/</a></li>
+                            <li>World Health Organization. (2018). Global status report on alcohol and health. <a href="https://www.who.int/publications/i/item/9789241565639" target="_blank">https://www.who.int/</a></li>
+                            <li>Centers for Disease Control and Prevention. (2022). Alcohol Use and Your Health. <a href="https://www.cdc.gov/alcohol/fact-sheets/alcohol-use.htm" target="_blank">https://www.cdc.gov/</a></li>
+                            <li>American Addiction Centers. (2022). Blood Alcohol Content and You. <a href="https://www.alcohol.org/bac-calculator/" target="_blank">https://www.alcohol.org/</a></li>
+                        </ol>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p data-i18n="effects.disclaimer">Disclaimer: This information is provided for educational purposes only and is not intended as medical advice. Always consult with a healthcare professional regarding health concerns related to alcohol consumption.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Bottom -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bacometer</h3>
+                    <p data-i18n="footer.description">A free tool to estimate blood alcohol content and help promote responsible drinking decisions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                        <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                        <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.languages">Languages</h3>
+                    <ul class="language-list">
+                        <li><a href="/alcohol-effects.html">English</a></li>
+                        <li><a href="/no/alcohol-effects.html">Norsk</a></li>
+                        <li><a href="/es/alcohol-effects.html">Español</a></li>
+                        <li><a href="/dk/alcohol-effects.html">Dansk</a></li>
+                        <li><a href="/se/alcohol-effects.html">Svenska</a></li>
+                        <li><a href="/fi/alcohol-effects.html">Suomi</a></li>
+                        <li><a href="/nl/alcohol-effects.html">Nederlands</a></li>
+                        <li><a href="/de/alcohol-effects.html">Deutsch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year">2025</span> Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
+                <p><a href="/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- i18next script -->
+    <script src="/js/i18n.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Tab switching functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons and content
+                    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to current button
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

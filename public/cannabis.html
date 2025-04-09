@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="meta.cannabisTitle">Cannabis Calculator - Bacometer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" data-i18n="meta.cannabisDescription" content="Calculate the approximate effects and duration of cannabis based on consumption method, potency, and personal factors. Free cannabis calculator tool.">
+    <meta name="keywords" content="cannabis calculator, marijuana calculator, THC calculator, cannabis effects, weed calculator">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Cannabis Calculator - Bacometer">
+    <meta property="og:description" content="Calculate the approximate effects and duration of cannabis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bacometer.com/cannabis">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bacometer.com/cannabis">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://bacometer.com/cannabis">
+    <link rel="alternate" hreflang="no" href="https://bacometer.com/no/cannabis">
+    <link rel="alternate" hreflang="es" href="https://bacometer.com/es/cannabis">
+    <link rel="alternate" hreflang="da" href="https://bacometer.com/dk/cannabis">
+    <link rel="alternate" hreflang="sv" href="https://bacometer.com/se/cannabis">
+    <link rel="alternate" hreflang="fi" href="https://bacometer.com/fi/cannabis">
+    <link rel="alternate" hreflang="nl" href="https://bacometer.com/nl/cannabis">
+    <link rel="alternate" hreflang="de" href="https://bacometer.com/de/cannabis">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+    
+    <!-- i18next Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.16/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.4.1/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2602658229657216" crossorigin="anonymous"></script>
+    
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1 data-i18n="nav.cannabis">Cannabis Calculator</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                    <li><a href="/cannabis.html" class="active" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                    <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                    <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="no">Norsk</option>
+                    <option value="es">Español</option>
+                    <option value="dk">Dansk</option>
+                    <option value="se">Svenska</option>
+                    <option value="fi">Suomi</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 data-i18n="cannabis.title">Cannabis Effects Calculator</h2>
+                <p data-i18n="cannabis.subtitle">Estimate the duration and intensity of cannabis effects based on your consumption</p>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Top -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-container">
+                    <h3 data-i18n="cannabis.calculatorTitle">Cannabis Effects Calculator</h3>
+                    <form id="cannabis-calculator">
+                        <div class="form-group">
+                            <label for="gender" data-i18n="calculator.gender">Gender:</label>
+                            <select id="gender" required>
+                                <option value="" data-i18n="calculator.selectGender">Select</option>
+                                <option value="male" data-i18n="calculator.male">Male</option>
+                                <option value="female" data-i18n="calculator.female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age" data-i18n="calculator.age">Age:</label>
+                            <input type="number" id="age" min="18" max="120" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="weight" data-i18n="calculator.weight">Weight (kg):</label>
+                            <input type="number" id="weight" min="30" max="250" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height" data-i18n="calculator.height">Height (cm):</label>
+                            <input type="number" id="height" min="120" max="250">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="tolerance" data-i18n="cannabis.tolerance">Tolerance Level:</label>
+                            <select id="tolerance" required>
+                                <option value="none" data-i18n="cannabis.toleranceNone">None (First-time or rare user)</option>
+                                <option value="low" data-i18n="cannabis.toleranceLow">Low (Monthly user)</option>
+                                <option value="medium" data-i18n="cannabis.toleranceMedium">Medium (Weekly user)</option>
+                                <option value="high" data-i18n="cannabis.toleranceHigh">High (Daily user)</option>
+                                <option value="very-high" data-i18n="cannabis.toleranceVeryHigh">Very High (Multiple times daily)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="consumption-container">
+                            <h4 data-i18n="cannabis.consumption">Consumption Details</h4>
+                            
+                            <div class="form-group">
+                                <label for="method" data-i18n="cannabis.method">Consumption Method:</label>
+                                <select id="method" required>
+                                    <option value="smoking" data-i18n="cannabis.methodSmoking">Smoking</option>
+                                    <option value="vaping" data-i18n="cannabis.methodVaping">Vaping</option>
+                                    <option value="edible" data-i18n="cannabis.methodEdible">Edible</option>
+                                    <option value="oil" data-i18n="cannabis.methodOil">Oil/Tincture</option>
+                                </select>
+                            </div>
+                            
+                            <div id="smoking-options" class="method-options">
+                                <div class="form-group">
+                                    <label for="smoking-amount" data-i18n="cannabis.smokingAmount">Amount (grams):</label>
+                                    <input type="number" id="smoking-amount" min="0.05" max="3" step="0.05" value="0.5">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="thc-percentage" data-i18n="cannabis.thcPercentage">THC Percentage:</label>
+                                    <select id="thc-percentage">
+                                        <option value="5" data-i18n="cannabis.thcLow">Low (5% THC)</option>
+                                        <option value="15" selected data-i18n="cannabis.thcMedium">Medium (15% THC)</option>
+                                        <option value="25" data-i18n="cannabis.thcHigh">High (25% THC)</option>
+                                        <option value="custom" data-i18n="cannabis.thcCustom">Custom</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group custom-thc" style="display: none;">
+                                    <label for="custom-thc-percentage" data-i18n="cannabis.customThc">Custom THC %:</label>
+                                    <input type="number" id="custom-thc-percentage" min="1" max="35" step="0.1" value="15">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="cbd-percentage" data-i18n="cannabis.cbdPercentage">CBD Percentage:</label>
+                                    <select id="cbd-percentage">
+                                        <option value="0" selected data-i18n="cannabis.cbdNone">None (0% CBD)</option>
+                                        <option value="1" data-i18n="cannabis.cbdLow">Low (1% CBD)</option>
+                                        <option value="5" data-i18n="cannabis.cbdMedium">Medium (5% CBD)</option>
+                                        <option value="10" data-i18n="cannabis.cbdHigh">High (10% CBD)</option>
+                                        <option value="custom" data-i18n="cannabis.cbdCustom">Custom</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group custom-cbd" style="display: none;">
+                                    <label for="custom-cbd-percentage" data-i18n="cannabis.customCbd">Custom CBD %:</label>
+                                    <input type="number" id="custom-cbd-percentage" min="0" max="20" step="0.1" value="0">
+                                </div>
+                            </div>
+                            
+                            <div id="edible-options" class="method-options" style="display: none;">
+                                <div class="form-group">
+                                    <label for="edible-thc" data-i18n="cannabis.edibleThc">THC Content (mg):</label>
+                                    <input type="number" id="edible-thc" min="1" max="100" value="10">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="edible-cbd" data-i18n="cannabis.edibleCbd">CBD Content (mg):</label>
+                                    <input type="number" id="edible-cbd" min="0" max="100" value="0">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="eaten-recently" data-i18n="cannabis.eatenRecently">Have you eaten recently?</label>
+                                    <select id="eaten-recently">
+                                        <option value="empty" data-i18n="cannabis.emptyStomach">Empty stomach</option>
+                                        <option value="light" data-i18n="cannabis.lightMeal">Light meal</option>
+                                        <option value="full" data-i18n="cannabis.fullMeal">Full meal</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consumption-time" data-i18n="cannabis.consumptionTime">Time of Consumption:</label>
+                            <input type="time" id="consumption-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current-time" data-i18n="calculator.currentTime">Current Time:</label>
+                            <input type="time" id="current-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="metabolism" data-i18n="calculator.metabolism">Metabolism:</label>
+                            <select id="metabolism">
+                                <option value="normal" data-i18n="calculator.normalMetabolism">Normal</option>
+                                <option value="slow" data-i18n="calculator.slowMetabolism">Slow</option>
+                                <option value="fast" data-i18n="calculator.fastMetabolism">Fast</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" data-i18n="cannabis.calculate">Calculate Effects</button>
+                    </form>
+                </div>
+                
+                <div id="results" class="results-container" style="display: none;">
+                    <h3 data-i18n="results.title">Your Results</h3>
+                    <div class="cannabis-display">
+                        <div class="intensity-value">
+                            <span id="intensity-level">Medium</span>
+                            <div class="intensity-bar">
+                                <div id="intensity-indicator" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-details">
+                        <p><span data-i18n="cannabis.resultsCurrent">Your current effects intensity is</span> <span id="current-intensity">Moderate</span>.</p>
+                        <p><span data-i18n="cannabis.resultsOnset">Effects began approximately</span> <span id="onset-time">00:00</span>.</p>
+                        <p><span data-i18n="cannabis.resultsPeak">Peak effects occurred/will occur at approximately</span> <span id="peak-time">00:00</span>.</p>
+                        <p><span data-i18n="cannabis.resultsClear">Effects will fully clear by approximately</span> <span id="clear-time">00:00</span>.</p>
+                        <p><span data-i18n="cannabis.resultsDriving">It would be safe to drive at approximately</span> <span id="safe-time">00:00</span>.</p>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="effects-chart"></canvas>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p data-i18n="cannabis.disclaimer">Disclaimer: This calculator provides an estimate only and should not be used as a definitive measure of cannabis effects. Many factors can influence how your body processes cannabis, including individual biochemistry, cannabis strain, and consumption method. Never drive or operate machinery while under the influence of cannabis. In many jurisdictions, driving under the influence of cannabis is illegal regardless of perceived impairment level.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Middle -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <section class="info-section">
+            <div class="container">
+                <div class="info-box">
+                    <h3 data-i18n="cannabis.effectsTitle">Understanding Cannabis Effects</h3>
+                    <div class="cannabis-levels">
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level1Range">Minimal</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level1Title">Threshold Effects</h4>
+                                <p data-i18n="cannabis.level1Description">Subtle mood enhancement, slightly altered senses, minimal cognitive effects. Most people can function normally and the effects may be barely noticeable.</p>
+                            </div>
+                        </div>
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level2Range">Mild</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level2Title">Mild Effects</h4>
+                                <p data-i18n="cannabis.level2Description">Noticeable mood elevation, enhanced sensory perception, mild cognitive alterations (such as enhanced creativity or changed thought patterns), slight physical relaxation.</p>
+                            </div>
+                        </div>
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level3Range">Moderate</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level3Title">Moderate Effects</h4>
+                                <p data-i18n="cannabis.level3Description">Significant euphoria, heightened sensory perception, moderate cognitive alterations, pronounced physical relaxation, difficulty with complex tasks, altered time perception. Driving is impaired.</p>
+                            </div>
+                        </div>
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level4Range">Strong</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level4Title">Strong Effects</h4>
+                                <p data-i18n="cannabis.level4Description">Strong euphoria or anxiety, intensely altered sensory perception, significant cognitive alterations, strong physical effects (heaviness, lightness, tingling), marked impairment of coordination and reaction time.</p>
+                            </div>
+                        </div>
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level5Range">Very Strong</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level5Title">Very Strong Effects</h4>
+                                <p data-i18n="cannabis.level5Description">Overwhelming cognitive alterations, extremely altered perception, possible hallucinations, difficulty tracking thoughts, strong physical symptoms, difficulty with basic tasks, significant anxiety or paranoia possible.</p>
+                            </div>
+                        </div>
+                        <div class="cannabis-level">
+                            <div class="level-range" data-i18n="cannabis.level6Range">Overwhelming</div>
+                            <div class="level-description">
+                                <h4 data-i18n="cannabis.level6Title">Overwhelming Effects</h4>
+                                <p data-i18n="cannabis.level6Description">Complete disconnection from normal reality, profound alteration of senses, extreme mental confusion, possible severe anxiety or panic, incapacitating physical effects. Medical monitoring may be advisable.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 data-i18n="cannabis.methodsTitle">Different Consumption Methods</h3>
+                    <div class="methods-info">
+                        <div class="method-item">
+                            <h4 data-i18n="cannabis.smokingTitle">Smoking</h4>
+                            <ul>
+                                <li data-i18n="cannabis.smokingOnset">Onset: 1-10 minutes</li>
+                                <li data-i18n="cannabis.smokingPeak">Peak: 15-30 minutes</li>
+                                <li data-i18n="cannabis.smokingDuration">Duration: 1-3 hours</li>
+                                <li data-i18n="cannabis.smokingNotes">Notes: Fast onset, relatively short duration, most common method</li>
+                            </ul>
+                        </div>
+                        <div class="method-item">
+                            <h4 data-i18n="cannabis.vapingTitle">Vaping</h4>
+                            <ul>
+                                <li data-i18n="cannabis.vapingOnset">Onset: 1-5 minutes</li>
+                                <li data-i18n="cannabis.vapingPeak">Peak: 10-20 minutes</li>
+                                <li data-i18n="cannabis.vapingDuration">Duration: 1-2 hours</li>
+                                <li data-i18n="cannabis.vapingNotes">Notes: Fast onset, potentially less harmful to lungs than smoking, effects may be clearer</li>
+                            </ul>
+                        </div>
+                        <div class="method-item">
+                            <h4 data-i18n="cannabis.edibleTitle">Edibles</h4>
+                            <ul>
+                                <li data-i18n="cannabis.edibleOnset">Onset: 30-120 minutes</li>
+                                <li data-i18n="cannabis.ediblePeak">Peak: 2-4 hours</li>
+                                <li data-i18n="cannabis.edibleDuration">Duration: 4-8 hours</li>
+                                <li data-i18n="cannabis.edibleNotes">Notes: Slow onset but much longer duration, often stronger effects, higher risk of overconsumption</li>
+                            </ul>
+                        </div>
+                        <div class="method-item">
+                            <h4 data-i18n="cannabis.oilTitle">Oil/Tincture</h4>
+                            <ul>
+                                <li data-i18n="cannabis.oilOnset">Onset: 15-45 minutes</li>
+                                <li data-i18n="cannabis.oilPeak">Peak: 1-2 hours</li>
+                                <li data-i18n="cannabis.oilDuration">Duration: 2-6 hours</li>
+                                <li data-i18n="cannabis.oilNotes">Notes: Medium onset speed, easier to control dosage, sublingual application speeds onset</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Bottom -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-2602658229657216"
+                 data-ad-slot="3335963620"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bacometer</h3>
+                    <p data-i18n="footer.description">A free tool to estimate blood alcohol content and help promote responsible drinking decisions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                        <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                        <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.languages">Languages</h3>
+                    <ul class="language-list">
+                        <li><a href="/cannabis.html">English</a></li>
+                        <li><a href="/no/cannabis.html">Norsk</a></li>
+                        <li><a href="/es/cannabis.html">Español</a></li>
+                        <li><a href="/dk/cannabis.html">Dansk</a></li>
+                        <li><a href="/se/cannabis.html">Svenska</a></li>
+                        <li><a href="/fi/cannabis.html">Suomi</a></li>
+                        <li><a href="/nl/cannabis.html">Nederlands</a></li>
+                        <li><a href="/de/cannabis.html">Deutsch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year">2025</span> Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
+                <p><a href="/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="/js/i18n.js"></script>
+    <script src="/js/cannabis.js"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Set current times
+        document.addEventListener('DOMContentLoaded', function() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const currentTime = `${hours}:${minutes}`;
+            
+            document.getElementById('consumption-time').value = currentTime;
+            document.getElementById('current-time').value = currentTime;
+            
+            // Toggle custom THC percentage input
+            document.getElementById('thc-percentage').addEventListener('change', function() {
+                const customThcDiv = document.querySelector('.custom-thc');
+                if (this.value === 'custom') {
+                    customThcDiv.style.display = 'block';
+                } else {
+                    customThcDiv.style.display = 'none';
+                }
+            });
+            
+            // Toggle custom CBD percentage input
+            document.getElementById('cbd-percentage').addEventListener('change', function() {
+                const customCbdDiv = document.querySelector('.custom-cbd');
+                if (this.value === 'custom') {
+                    customCbdDiv.style.display = 'block';
+                } else {
+                    customCbdDiv.style.display = 'none';
+                }
+            });
+            
+            // Toggle consumption method options
+            document.getElementById('method').addEventListener('change', function() {
+                const smokingOptions = document.getElementById('smoking-options');
+                const edibleOptions = document.getElementById('edible-options');
+                
+                if (this.value === 'smoking' || this.value === 'vaping') {
+                    smokingOptions.style.display = 'block';
+                    edibleOptions.style.display = 'none';
+                } else if (this.value === 'edible' || this.value === 'oil') {
+                    smokingOptions.style.display = 'none';
+                    edibleOptions.style.display = 'block';
+                }
+            });
+            
+            // Form submission
+            document.getElementById('cannabis-calculator').addEventListener('submit', function(e) {
+                e.preventDefault();
+                calculateCannabisEffects();
+            });
+        });
+        
+        // Calculate cannabis effects
+        function calculateCannabisEffects() {
+            // Get form values
+            const gender = document.getElementById('gender').value;
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const tolerance = document.getElementById('tolerance').value;
+            const method = document.getElementById('method').value;
+            const metabolism = document.getElementById('metabolism').value;
+            
+            // Validate form
+            if (!gender || !age || !weight || !tolerance || !method) {
+                alert('Please fill out all required fields');
+                return;
+            }
+            
+            // Get consumption times
+            const consumptionTime = document.getElementById('consumption-time').value;
+            const currentTime = document.getElementById('current-time').value;
+            
+            // Calculate time difference in minutes
+            const consumptionMinutes = convertTimeToMinutes(consumptionTime);
+            const currentMinutes = convertTimeToMinutes(currentTime);
+            let timeSinceConsumption = currentMinutes - consumptionMinutes;
+            
+            // Handle crossing midnight
+            if (timeSinceConsumption < 0) {
+                timeSinceConsumption += 24 * 60; // Add 24 hours in minutes
+            }
+            
+            // Calculate THC content
+            let thcContent = 0;
+            let cbdContent = 0;
+            
+            if (method === 'smoking' || method === 'vaping') {
+                const amount = parseFloat(document.getElementById('smoking-amount').value);
+                let thcPercentage = document.getElementById('thc-percentage').value;
+                let cbdPercentage = document.getElementById('cbd-percentage').value;
+                
+                if (thcPercentage === 'custom') {
+                    thcPercentage = parseFloat(document.getElementById('custom-thc-percentage').value);
+                } else {
+                    thcPercentage = parseFloat(thcPercentage);
+                }
+                
+                if (cbdPercentage === 'custom') {
+                    cbdPercentage = parseFloat(document.getElementById('custom-cbd-percentage').value);
+                } else {
+                    cbdPercentage = parseFloat(cbdPercentage);
+                }
+                
+                // Convert from percentage to milligrams
+                // Rough estimate: 1g of cannabis at 15% THC contains 150mg THC
+                // But smoking/vaping has lower bioavailability
+                const bioavailability = method === 'smoking' ? 0.3 : 0.5; // 30% for smoking, 50% for vaping
+                thcContent = amount * 1000 * (thcPercentage / 100) * bioavailability;
+                cbdContent = amount * 1000 * (cbdPercentage / 100) * bioavailability;
+                
+            } else if (method === 'edible' || method === 'oil') {
+                thcContent = parseFloat(document.getElementById('edible-thc').value);
+                cbdContent = parseFloat(document.getElementById('edible-cbd').value);
+                
+                // Adjust for digestion if edible
+                if (method === 'edible') {
+                    const eatenRecently = document.getElementById('eaten-recently').value;
+                    let digestionFactor = 1.0;
+                    
+                    if (eatenRecently === 'empty') {
+                        digestionFactor = 1.2; // Faster and potentially stronger effects
+                    } else if (eatenRecently === 'full') {
+                        digestionFactor = 0.8; // Slower, potentially milder effects
+                    }
+                    
+                    thcContent *= digestionFactor;
+                }
+            }
+            
+            // Adjust for tolerance
+            let toleranceFactor = 1.0;
+            switch (tolerance) {
+                case 'none':
+                    toleranceFactor = 2.0; // Much stronger effects for first-time users
+                    break;
+                case 'low':
+                    toleranceFactor = 1.5;
+                    break;
+                case 'medium':
+                    toleranceFactor = 1.0; // Baseline
+                    break;
+                case 'high':
+                    toleranceFactor = 0.7;
+                    break;
+                case 'very-high':
+                    toleranceFactor = 0.5; // Significantly reduced effects
+                    break;
+            }
+            
+            // Adjust for weight (basic approximation)
+            const weightFactor = 70 / weight; // Standardize to 70kg
+            
+            // Adjust for metabolism
+            let metabolismFactor = 1.0;
+            if (metabolism === 'slow') {
+                metabolismFactor = 0.8; // Slower metabolism = longer lasting effects
+            } else if (metabolism === 'fast') {
+                metabolismFactor = 1.2; // Faster metabolism = shorter lasting effects
+            }
+            
+            // Adjust for gender (approximate)
+            const genderFactor = gender === 'female' ? 1.1 : 1.0; // Slightly stronger effects for females on average
+            
+            // Calculate overall effect magnitude (simplified model)
+            let effectMagnitude = thcContent * toleranceFactor * weightFactor * genderFactor;
+            
+            // Modify by CBD content (CBD can moderate THC effects)
+            if (cbdContent > 0) {
+                const cbdModifier = Math.max(0.7, 1 - (cbdContent / (thcContent * 2)));
+                effectMagnitude *= cbdModifier;
+            }
+            
+            // Calculate timing of effects based on consumption method
+            let onsetTime, peakTime, clearTime, safeDrivingTime;
+            let currentIntensity;
+            
+            if (method === 'smoking' || method === 'vaping') {
+                // Timing for smoking/vaping
+                const onsetMinutes = method === 'smoking' ? 5 : 3;
+                const peakMinutes = method === 'smoking' ? 20 : 15;
+                const durationHours = method === 'smoking' ? 2.5 : 2;
+                
+                onsetTime = addMinutesToTime(consumptionTime, onsetMinutes);
+                peakTime = addMinutesToTime(consumptionTime, peakMinutes);
+                clearTime = addMinutesToTime(consumptionTime, durationHours * 60 * metabolismFactor);
+                safeDrivingTime = addMinutesToTime(consumptionTime, (durationHours * 0.8) * 60 * metabolismFactor);
+                
+                // Calculate current intensity based on time since consumption
+                if (timeSinceConsumption < onsetMinutes) {
+                    // Before onset
+                    currentIntensity = (timeSinceConsumption / onsetMinutes) * effectMagnitude * 0.2;
+                } else if (timeSinceConsumption < peakMinutes) {
+                    // Rising to peak
+                    const riseProgress = (timeSinceConsumption - onsetMinutes) / (peakMinutes - onsetMinutes);
+                    currentIntensity = (0.2 + (riseProgress * 0.8)) * effectMagnitude;
+                } else {
+                    // After peak, declining
+                    const durationMinutes = durationHours * 60 * metabolismFactor;
+                    const declineProgress = Math.min(1, (timeSinceConsumption - peakMinutes) / (durationMinutes - peakMinutes));
+                    currentIntensity = (1 - declineProgress) * effectMagnitude;
+                }
+                
+            } else if (method === 'edible') {
+                // Timing for edibles
+                const eatenRecently = document.getElementById('eaten-recently').value;
+                let onsetModifier = 1.0;
+                
+                if (eatenRecently === 'empty') {
+                    onsetModifier = 0.7; // Faster onset on empty stomach
+                } else if (eatenRecently === 'full') {
+                    onsetModifier = 1.3; // Slower onset on full stomach
+                }
+                
+                const onsetMinutes = 60 * onsetModifier;
+                const peakMinutes = 180 * onsetModifier;
+                const durationHours = 6;
+                
+                onsetTime = addMinutesToTime(consumptionTime, onsetMinutes);
+                peakTime = addMinutesToTime(consumptionTime, peakMinutes);
+                clearTime = addMinutesToTime(consumptionTime, durationHours * 60 * metabolismFactor);
+                safeDrivingTime = addMinutesToTime(consumptionTime, (durationHours * 0.8) * 60 * metabolismFactor);
+                
+                // Calculate current intensity
+                if (timeSinceConsumption < onsetMinutes) {
+                    // Before onset
+                    currentIntensity = (timeSinceConsumption / onsetMinutes) * effectMagnitude * 0.1;
+                } else if (timeSinceConsumption < peakMinutes) {
+                    // Rising to peak
+                    const riseProgress = (timeSinceConsumption - onsetMinutes) / (peakMinutes - onsetMinutes);
+                    currentIntensity = (0.1 + (riseProgress * 0.9)) * effectMagnitude;
+                } else {
+                    // After peak, declining
+                    const durationMinutes = durationHours * 60 * metabolismFactor;
+                    const declineProgress = Math.min(1, (timeSinceConsumption - peakMinutes) / (durationMinutes - peakMinutes));
+                    currentIntensity = (1 - declineProgress) * effectMagnitude;
+                }
+                
+            } else if (method === 'oil') {
+                // Timing for oil/tincture
+                const onsetMinutes = 30;
+                const peakMinutes = 90;
+                const durationHours = 4;
+                
+                onsetTime = addMinutesToTime(consumptionTime, onsetMinutes);
+                peakTime = addMinutesToTime(consumptionTime, peakMinutes);
+                clearTime = addMinutesToTime(consumptionTime, durationHours * 60 * metabolismFactor);
+                safeDrivingTime = addMinutesToTime(consumptionTime, (durationHours * 0.8) * 60 * metabolismFactor);
+                
+                // Calculate current intensity
+                if (timeSinceConsumption < onsetMinutes) {
+                    // Before onset
+                    currentIntensity = (timeSinceConsumption / onsetMinutes) * effectMagnitude * 0.15;
+                } else if (timeSinceConsumption < peakMinutes) {
+                    // Rising to peak
+                    const riseProgress = (timeSinceConsumption - onsetMinutes) / (peakMinutes - onsetMinutes);
+                    currentIntensity = (0.15 + (riseProgress * 0.85)) * effectMagnitude;
+                } else {
+                    // After peak, declining
+                    const durationMinutes = durationHours * 60 * metabolismFactor;
+                    const declineProgress = Math.min(1, (timeSinceConsumption - peakMinutes) / (durationMinutes - peakMinutes));
+                    currentIntensity = (1 - declineProgress) * effectMagnitude;
+                }
+            }
+            
+            // Determine intensity level text
+            let intensityLevel;
+            let intensityPercentage;
+            
+            if (currentIntensity <= 0) {
+                intensityLevel = "None";
+                intensityPercentage = 0;
+            } else if (currentIntensity < 5) {
+                intensityLevel = "Minimal";
+                intensityPercentage = 10;
+            } else if (currentIntensity < 15) {
+                intensityLevel = "Mild";
+                intensityPercentage = 25;
+            } else if (currentIntensity < 30) {
+                intensityLevel = "Moderate";
+                intensityPercentage = 50;
+            } else if (currentIntensity < 50) {
+                intensityLevel = "Strong";
+                intensityPercentage = 75;
+            } else if (currentIntensity < 70) {
+                intensityLevel = "Very Strong";
+                intensityPercentage = 90;
+            } else {
+                intensityLevel = "Overwhelming";
+                intensityPercentage = 100;
+            }
+            
+            // Update the results
+            document.getElementById('intensity-level').textContent = intensityLevel;
+            document.getElementById('intensity-indicator').style.width = `${intensityPercentage}%`;
+            document.getElementById('current-intensity').textContent = intensityLevel;
+            document.getElementById('onset-time').textContent = onsetTime;
+            document.getElementById('peak-time').textContent = peakTime;
+            document.getElementById('clear-time').textContent = clearTime;
+            document.getElementById('safe-time').textContent = safeDrivingTime;
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            
+            // Generate chart
+            generateEffectsChart(method, consumptionMinutes, thcContent, toleranceFactor, metabolismFactor);
+        }
+        
+        // Convert time string (HH:MM) to minutes since midnight
+        function convertTimeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return (hours * 60) + minutes;
+        }
+        
+        // Add minutes to time string (HH:MM)
+        function addMinutesToTime(timeStr, minutesToAdd) {
+            let totalMinutes = convertTimeToMinutes(timeStr) + minutesToAdd;
+            
+            // Handle overflow (next day)
+            totalMinutes = totalMinutes % (24 * 60);
+            
+            const hours = Math.floor(totalMinutes / 60);
+            const minutes = totalMinutes % 60;
+            
+            return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+        }
+        
+        // Generate effects chart
+        function generateEffectsChart(method, consumptionMinutes, thcContent, toleranceFactor, metabolismFactor) {
+            // Define timing parameters based on consumption method
+            let onsetMinutes, peakMinutes, durationMinutes;
+            
+            if (method === 'smoking') {
+                onsetMinutes = 5;
+                peakMinutes = 20;
+                durationMinutes = 150 * metabolismFactor; // 2.5 hours in minutes
+            } else if (method === 'vaping') {
+                onsetMinutes = 3;
+                peakMinutes = 15;
+                durationMinutes = 120 * metabolismFactor; // 2 hours in minutes
+            } else if (method === 'edible') {
+                const eatenRecently = document.getElementById('eaten-recently').value;
+                let onsetModifier = 1.0;
+                
+                if (eatenRecently === 'empty') {
+                    onsetModifier = 0.7;
+                } else if (eatenRecently === 'full') {
+                    onsetModifier = 1.3;
+                }
+                
+                onsetMinutes = 60 * onsetModifier;
+                peakMinutes = 180 * onsetModifier;
+                durationMinutes = 360 * metabolismFactor; // 6 hours in minutes
+            } else if (method === 'oil') {
+                onsetMinutes = 30;
+                peakMinutes = 90;
+                durationMinutes = 240 * metabolismFactor; // 4 hours in minutes
+            }
+            
+            // Generate data points for the chart
+            const labels = [];
+            const dataPoints = [];
+            
+            // Start 15 minutes before consumption
+            const startTime = consumptionMinutes - 15;
+            // End 30 minutes after effects clear
+            const endTime = consumptionMinutes + durationMinutes + 30;
+            
+            // Time step (minutes)
+            const timeStep = 15;
+            
+            // For each time point
+            for (let time = startTime; time <= endTime; time += timeStep) {
+                // Convert minutes to time string for label
+                const hours = Math.floor((time / 60) % 24);
+                const minutes = time % 60;
+                const timeLabel = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+                labels.push(timeLabel);
+                
+                // Calculate intensity at this time
+                let intensity = 0;
+                const timeSinceConsumption = time - consumptionMinutes;
+                
+                if (timeSinceConsumption < 0) {
+                    intensity = 0; // Before consumption
+                } else if (timeSinceConsumption < onsetMinutes) {
+                    // Before onset
+                    intensity = (timeSinceConsumption / onsetMinutes) * thcContent * toleranceFactor * 0.2;
+                } else if (timeSinceConsumption < peakMinutes) {
+                    // Rising to peak
+                    const riseProgress = (timeSinceConsumption - onsetMinutes) / (peakMinutes - onsetMinutes);
+                    intensity = (0.2 + (riseProgress * 0.8)) * thcContent * toleranceFactor;
+                } else {
+                    // After peak, declining
+                    const declineProgress = Math.min(1, (timeSinceConsumption - peakMinutes) / (durationMinutes - peakMinutes));
+                    intensity = (1 - declineProgress) * thcContent * toleranceFactor;
+                }
+                
+                // Scale intensity for chart display
+                let scaledIntensity;
+                if (intensity <= 0) {
+                    scaledIntensity = 0;
+                } else if (intensity < 5) {
+                    scaledIntensity = 1; // Minimal
+                } else if (intensity < 15) {
+                    scaledIntensity = 2; // Mild
+                } else if (intensity < 30) {
+                    scaledIntensity = 3; // Moderate
+                } else if (intensity < 50) {
+                    scaledIntensity = 4; // Strong
+                } else if (intensity < 70) {
+                    scaledIntensity = 5; // Very Strong
+                } else {
+                    scaledIntensity = 6; // Overwhelming
+                }
+                
+                dataPoints.push(scaledIntensity);
+            }
+            
+            // Create chart
+            const ctx = document.getElementById('effects-chart').getContext('2d');
+            
+            // If chart already exists, destroy it
+            if (window.effectsChart) {
+                window.effectsChart.destroy();
+            }
+            
+            // Create new chart
+            window.effectsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Effect Intensity',
+                        data: dataPoints,
+                        borderColor: '#4a6eb5',
+                        backgroundColor: 'rgba(74, 110, 181, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 0,
+                        pointHitRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Time'
+                            },
+                            ticks: {
+                                maxTicksLimit: 8
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Effect Intensity'
+                            },
+                            min: 0,
+                            max: 6,
+                            ticks: {
+                                callback: function(value) {
+                                    const labels = ['None', 'Minimal', 'Mild', 'Moderate', 'Strong', 'Very Strong', 'Overwhelming'];
+                                    return labels[value] || '';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                drivingLine: {
+                                    type: 'line',
+                                    yMin: 2,
+                                    yMax: 2,
+                                    borderColor: '#dc3545',
+                                    borderWidth: 2,
+                                    borderDash: [5, 5],
+                                    label: {
+                                        content: 'Unsafe to Drive',
+                                        enabled: true,
+                                        position: 'start'
+                                    }
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const intensityLabels = ['None', 'Minimal', 'Mild', 'Moderate', 'Strong', 'Very Strong', 'Overwhelming'];
+                                    const value = context.parsed.y;
+                                    return `Intensity: ${intensityLabels[Math.round(value)]}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
