@@ -14,17 +14,6 @@ const METABOLISM_FACTORS = {
     fast: 1.2      // 20% faster metabolism
 };
 
-// Legal limits for different countries (in permille - ‰)
-const LEGAL_LIMITS = {
-    default: 0.5,  // Most European countries
-    us: 0.8,       // United States
-    uk: 0.8,       // United Kingdom
-    sweden: 0.2,   // Sweden
-    norway: 0.2,   // Norway
-    japan: 0.3,    // Japan
-    australia: 0.5 // Australia
-};
-
 // Standard drink sizes in ml for default values
 const STANDARD_DRINK_SIZES = {
     beer: 330,     // Standard beer bottle/can
@@ -84,6 +73,9 @@ function initBacCalculator() {
                 sizeInput.value = '';
             }
         });
+        
+        // Set time for the first drink as current time
+        document.getElementById('drink-time-1').value = `${hours}:${minutes}`;
     });
 }
 
@@ -120,39 +112,35 @@ function addDrinkInput() {
     const drinkItem = document.createElement('div');
     drinkItem.className = 'drink-item';
     
-    // Get translations for current language
-    const currentLang = getCurrentLanguage();
-    const t = window.translations[currentLang] || window.translations['en']; // Fallback to English
-    
-    // HTML for the new drink item
+    // HTML for the new drink item with i18next data attributes
     drinkItem.innerHTML = `
         <div class="form-group">
-            <label for="drink-type-${drinkCount}">${t.calculator.drinkType}:</label>
+            <label for="drink-type-${drinkCount}" data-i18n="calculator.drinkType">Type:</label>
             <select id="drink-type-${drinkCount}" class="drink-type" required>
-                <option value="">${t.calculator.selectType}</option>
-                <option value="beer">${t.calculator.beer}</option>
-                <option value="wine">${t.calculator.wine}</option>
-                <option value="spirits">${t.calculator.spirits}</option>
-                <option value="custom">${t.calculator.custom}</option>
+                <option value="" data-i18n="calculator.selectType">Select</option>
+                <option value="beer" data-i18n="calculator.beer">Beer (5%)</option>
+                <option value="wine" data-i18n="calculator.wine">Wine (12%)</option>
+                <option value="spirits" data-i18n="calculator.spirits">Spirits (40%)</option>
+                <option value="custom" data-i18n="calculator.custom">Custom</option>
             </select>
         </div>
         
         <div class="form-group custom-alcohol-content" style="display: none;">
-            <label for="custom-percent-${drinkCount}">${t.calculator.alcoholPercent}:</label>
+            <label for="custom-percent-${drinkCount}" data-i18n="calculator.alcoholPercent">Alcohol %:</label>
             <input type="number" id="custom-percent-${drinkCount}" min="0" max="100" step="0.1">
         </div>
         
         <div class="form-group">
-            <label for="drink-size-${drinkCount}">${t.calculator.size}:</label>
+            <label for="drink-size-${drinkCount}" data-i18n="calculator.size">Size (ml):</label>
             <input type="number" id="drink-size-${drinkCount}" class="drink-size" min="0" required>
         </div>
         
         <div class="form-group">
-            <label for="drink-time-${drinkCount}">${t.calculator.time}:</label>
+            <label for="drink-time-${drinkCount}" data-i18n="calculator.time">Time consumed:</label>
             <input type="time" id="drink-time-${drinkCount}" class="drink-time" required>
         </div>
         
-        <button type="button" class="remove-drink btn-secondary" data-id="${drinkCount}">${t.calculator.removeDrink}</button>
+        <button type="button" class="remove-drink btn-secondary" data-i18n="calculator.removeDrink">Remove</button>
     `;
     
     // Add to container
@@ -171,6 +159,24 @@ function addDrinkInput() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     document.getElementById(`drink-time-${drinkCount}`).value = `${hours}:${minutes}`;
+    
+    // Apply translations to new element
+    if (typeof i18next !== 'undefined' && i18next.isInitialized) {
+        drinkItem.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            const translation = i18next.t(key);
+            
+            if (translation) {
+                if (element.tagName === 'INPUT' && element.type === 'button') {
+                    element.value = translation;
+                } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = translation;
+                } else {
+                    element.textContent = translation;
+                }
+            }
+        });
+    }
 }
 
 /**
@@ -185,13 +191,9 @@ function calculateBAC() {
     const metabolism = document.getElementById('metabolism').value;
     const currentTime = document.getElementById('current-time').value;
     
-    // Get translations for current language
-    const currentLang = getCurrentLanguage();
-    const t = window.translations[currentLang] || window.translations['en']; // Fallback to English
-    
     // Validate inputs
     if (!gender || !age || !weight || !currentTime) {
-        alert('Please fill out all required fields');
+        alert(i18next.t('Please fill out all required fields') || 'Please fill out all required fields');
         return;
     }
     
@@ -199,7 +201,7 @@ function calculateBAC() {
     const drinks = collectDrinkData();
     
     if (drinks.length === 0) {
-        alert('Please add at least one drink');
+        alert(i18next.t('Please add at least one drink') || 'Please add at least one drink');
         return;
     }
     
@@ -243,7 +245,10 @@ function calculateBAC() {
     
     // Calculate safe to drive time (when BAC will be below legal limit)
     let hoursToLegalLimit = 0;
-    const legalLimit = LEGAL_LIMITS[currentLang] || LEGAL_LIMITS['default'];
+    // Get legal limit based on language/country
+    const currentLang = getCurrentLanguage();
+    const legalLimit = window.legalLimit || 0.5; // Default to 0.5‰ if not set
+    
     if (currentBAC > legalLimit) {
         hoursToLegalLimit = (currentBAC - legalLimit) / metabolismRate;
     }
@@ -261,7 +266,7 @@ function calculateBAC() {
     displayResults(currentBAC, hoursToSoberWhole, minutesToSober, safeTime);
     
     // Generate and display chart
-    generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate);
+    generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate, legalLimit);
 }
 
 /**
@@ -315,10 +320,6 @@ function convertTimeToMinutes(timeStr) {
  * Displays the BAC calculation results
  */
 function displayResults(bac, hoursToSober, minutesToSober, safeTime) {
-    // Get translations for current language
-    const currentLang = getCurrentLanguage();
-    const t = window.translations[currentLang] || window.translations['en']; // Fallback to English
-    
     // Show results container
     const resultsContainer = document.getElementById('results');
     resultsContainer.style.display = 'block';
@@ -334,7 +335,7 @@ function displayResults(bac, hoursToSober, minutesToSober, safeTime) {
     // Set safe driving time
     document.getElementById('safe-time').textContent = safeTime;
     
-    // Set BAC status
+    // Set BAC status with translations
     const bacStatus = document.getElementById('bac-status');
     let statusText = '';
     let statusClass = '';
@@ -342,7 +343,8 @@ function displayResults(bac, hoursToSober, minutesToSober, safeTime) {
     // Find the appropriate level
     for (const level of BAC_LEVELS) {
         if (bac <= level.max) {
-            statusText = t.status[level.status] || level.status;
+            // Use i18next for translation if available
+            statusText = i18next ? i18next.t(`status.${level.status}`) : level.status;
             statusClass = level.class;
             break;
         }
@@ -358,7 +360,7 @@ function displayResults(bac, hoursToSober, minutesToSober, safeTime) {
 /**
  * Generates a chart showing BAC over time
  */
-function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate) {
+function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate, legalLimit) {
     // Calculate start time (first drink time)
     const firstDrinkTime = drinks[0].timeInMinutes;
     
@@ -430,17 +432,13 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
             window.bacChart.destroy();
         }
         
-        // Get current language legal limit
-        const currentLang = getCurrentLanguage();
-        const legalLimit = LEGAL_LIMITS[currentLang] || LEGAL_LIMITS['default'];
-        
         // Create new chart
         window.bacChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: chartLabels,
                 datasets: [{
-                    label: 'Blood Alcohol Content (‰)',
+                    label: i18next ? i18next.t('Blood Alcohol Content (‰)') : 'Blood Alcohol Content (‰)',
                     data: dataPoints,
                     borderColor: '#4a6eb5',
                     backgroundColor: 'rgba(74, 110, 181, 0.1)',
@@ -457,7 +455,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                     x: {
                         title: {
                             display: true,
-                            text: 'Time'
+                            text: i18next ? i18next.t('Time') : 'Time'
                         },
                         ticks: {
                             maxTicksLimit: 8
@@ -466,7 +464,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                     y: {
                         title: {
                             display: true,
-                            text: 'BAC (‰)'
+                            text: i18next ? i18next.t('BAC (‰)') : 'BAC (‰)'
                         },
                         min: 0,
                         suggestedMax: Math.max(...dataPoints) * 1.1
@@ -483,7 +481,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                                 borderWidth: 2,
                                 borderDash: [5, 5],
                                 label: {
-                                    content: 'Legal Limit',
+                                    content: i18next ? i18next.t('Legal Limit') : 'Legal Limit',
                                     enabled: true,
                                     position: 'right'
                                 }
@@ -503,9 +501,9 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
     } else {
         // If Chart.js is not available, display a simple text result
         const chartContainer = document.getElementById('bac-chart').parentElement;
-        chartContainer.innerHTML = `<p>Chart visualization not available. Your current BAC is ${currentBAC.toFixed(2)}‰.</p>`;
+        chartContainer.innerHTML = `<p>${i18next ? i18next.t('Chart visualization not available. Your current BAC is') : 'Chart visualization not available. Your current BAC is'} ${currentBAC.toFixed(2)}‰.</p>`;
     }
 }
 
 // Initialize the calculator
-window.addEventListener('DOMContentLoaded', initBacCalculator);
+initBacCalculator();

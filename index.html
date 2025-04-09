@@ -18,9 +18,6 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://bacometer.com">
     
-    <!-- Favicon -->
-    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-    
     <!-- Language Alternates -->
     <link rel="alternate" hreflang="en" href="https://bacometer.com">
     <link rel="alternate" hreflang="no" href="https://bacometer.com/no">
@@ -30,6 +27,9 @@
     <link rel="alternate" hreflang="fi" href="https://bacometer.com/fi">
     <link rel="alternate" hreflang="nl" href="https://bacometer.com/nl">
     <link rel="alternate" hreflang="de" href="https://bacometer.com/de">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
     
     <!-- CSS -->
     <style>
@@ -502,6 +502,11 @@
         }
     </style>
     
+    <!-- i18next Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.16/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.4.1/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    
     <!-- Google AdSense (Replace with your actual AdSense code) -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
     
@@ -516,14 +521,14 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active" data-i18n="nav.bac">BAC Calculator</a></li>
-                    <li><a href="cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
-                    <li><a href="alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
-                    <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                    <li><a href="/" class="active" data-i18n="nav.bac">BAC Calculator</a></li>
+                    <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                    <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                    <li><a href="/about.html" data-i18n="nav.about">About</a></li>
                 </ul>
             </nav>
             <div class="language-selector">
-                <select id="language-select" onchange="changeLanguage(this.value)">
+                <select id="language-select">
                     <option value="en">English</option>
                     <option value="no">Norsk</option>
                     <option value="es">Español</option>
@@ -547,7 +552,7 @@
         
         <!-- AdSense Ad - Top -->
         <div class="ad-container">
-            <p>Advertisement</p>
+            <p data-i18n="ads.advertisement">Advertisement</p>
             <!-- Replace with your actual AdSense code -->
             <!--
             <ins class="adsbygoogle"
@@ -675,7 +680,7 @@
         
         <!-- AdSense Ad - Middle -->
         <div class="ad-container">
-            <p>Advertisement</p>
+            <p data-i18n="ads.advertisement">Advertisement</p>
             <!-- Replace with your actual AdSense code -->
             <!--
             <ins class="adsbygoogle"
@@ -693,48 +698,48 @@
         <section class="info-section">
             <div class="container">
                 <div class="info-box">
-                    <h3>Understanding BAC Levels</h3>
+                    <h3 data-i18n="info.title">Understanding BAC Levels</h3>
                     <div class="bac-levels">
                         <div class="bac-level">
-                            <div class="level-range">0.00‰ - 0.20‰</div>
+                            <div class="level-range" data-i18n="info.level1.range">0.00‰ - 0.20‰</div>
                             <div class="level-description">
-                                <h4>Sober to Mild Effects</h4>
-                                <p>Little to no effect for most people. Slight mood elevation and relaxation may be felt.</p>
+                                <h4 data-i18n="info.level1.title">Sober to Mild Effects</h4>
+                                <p data-i18n="info.level1.description">Little to no effect for most people. Slight mood elevation and relaxation may be felt.</p>
                             </div>
                         </div>
                         <div class="bac-level">
-                            <div class="level-range">0.20‰ - 0.50‰</div>
+                            <div class="level-range" data-i18n="info.level2.range">0.20‰ - 0.50‰</div>
                             <div class="level-description">
-                                <h4>Mild Impairment</h4>
-                                <p>Relaxation, slight body warmth, mild mood enhancement. Slight decline in visual functions and ability to multitask.</p>
+                                <h4 data-i18n="info.level2.title">Mild Impairment</h4>
+                                <p data-i18n="info.level2.description">Relaxation, slight body warmth, mild mood enhancement. Slight decline in visual functions and ability to multitask.</p>
                             </div>
                         </div>
                         <div class="bac-level">
-                            <div class="level-range">0.50‰ - 0.80‰</div>
+                            <div class="level-range" data-i18n="info.level3.range">0.50‰ - 0.80‰</div>
                             <div class="level-description">
-                                <h4>Significant Impairment</h4>
-                                <p>Reduced coordination, decreased ability to track moving objects. Reduced ability to detect danger. Judgment and self-control are reduced.</p>
+                                <h4 data-i18n="info.level3.title">Significant Impairment</h4>
+                                <p data-i18n="info.level3.description">Reduced coordination, decreased ability to track moving objects. Reduced ability to detect danger. Judgment and self-control are reduced.</p>
                             </div>
                         </div>
                         <div class="bac-level">
-                            <div class="level-range">0.80‰ - 1.50‰</div>
+                            <div class="level-range" data-i18n="info.level4.range">0.80‰ - 1.50‰</div>
                             <div class="level-description">
-                                <h4>Severe Impairment</h4>
-                                <p>Poor muscle coordination, difficulty with balance. Slurred speech, poor judgment, impaired memory and comprehension.</p>
+                                <h4 data-i18n="info.level4.title">Severe Impairment</h4>
+                                <p data-i18n="info.level4.description">Poor muscle coordination, difficulty with balance. Slurred speech, poor judgment, impaired memory and comprehension.</p>
                             </div>
                         </div>
                         <div class="bac-level">
-                            <div class="level-range">1.50‰ - 3.00‰</div>
+                            <div class="level-range" data-i18n="info.level5.range">1.50‰ - 3.00‰</div>
                             <div class="level-description">
-                                <h4>Very Dangerous</h4>
-                                <p>Major loss of balance. Significantly impaired vision, awareness, and judgment. Nausea, possible vomiting. Risk of losing consciousness.</p>
+                                <h4 data-i18n="info.level5.title">Very Dangerous</h4>
+                                <p data-i18n="info.level5.description">Major loss of balance. Significantly impaired vision, awareness, and judgment. Nausea, possible vomiting. Risk of losing consciousness.</p>
                             </div>
                         </div>
                         <div class="bac-level">
-                            <div class="level-range">3.00‰+</div>
+                            <div class="level-range" data-i18n="info.level6.range">3.00‰+</div>
                             <div class="level-description">
-                                <h4>Life-Threatening</h4>
-                                <p>Severe risk of alcohol poisoning. Unconsciousness. Risk of death due to respiratory depression. Emergency medical attention required.</p>
+                                <h4 data-i18n="info.level6.title">Life-Threatening</h4>
+                                <p data-i18n="info.level6.description">Severe risk of alcohol poisoning. Unconsciousness. Risk of death due to respiratory depression. Emergency medical attention required.</p>
                             </div>
                         </div>
                     </div>
@@ -744,7 +749,7 @@
         
         <!-- AdSense Ad - Bottom -->
         <div class="ad-container">
-            <p>Advertisement</p>
+            <p data-i18n="ads.advertisement">Advertisement</p>
             <!-- Replace with your actual AdSense code -->
             <!--
             <ins class="adsbygoogle"
@@ -770,36 +775,169 @@
                 <div class="footer-section">
                     <h3 data-i18n="footer.quickLinks">Quick Links</h3>
                     <ul>
-                        <li><a href="index.html" data-i18n="nav.bac">BAC Calculator</a></li>
-                        <li><a href="cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
-                        <li><a href="alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
-                        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+                        <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                        <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                        <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3 data-i18n="footer.languages">Languages</h3>
                     <ul class="language-list">
-                        <li><a href="https://bacometer.com">English</a></li>
-                        <li><a href="https://bacometer.com/no">Norsk</a></li>
-                        <li><a href="https://bacometer.com/es">Español</a></li>
-                        <li><a href="https://bacometer.com/dk">Dansk</a></li>
-                        <li><a href="https://bacometer.com/se">Svenska</a></li>
-                        <li><a href="https://bacometer.com/fi">Suomi</a></li>
-                        <li><a href="https://bacometer.com/nl">Nederlands</a></li>
-                        <li><a href="https://bacometer.com/de">Deutsch</a></li>
+                        <li><a href="/">English</a></li>
+                        <li><a href="/no">Norsk</a></li>
+                        <li><a href="/es">Español</a></li>
+                        <li><a href="/dk">Dansk</a></li>
+                        <li><a href="/se">Svenska</a></li>
+                        <li><a href="/fi">Suomi</a></li>
+                        <li><a href="/nl">Nederlands</a></li>
+                        <li><a href="/de">Deutsch</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
-                <p><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
+                <p>&copy; <span id="year">2025</span> Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
+                <p><a href="/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
             </div>
         </div>
     </footer>
     
-    <!-- JavaScript -->
-    <script src="js/simplified-translations.js"></script>
-    <script src="js/calculator.js"></script>
-    <script src="js/main.js"></script>
+    <!-- i18next Initialization -->
+    <script>
+        // Available languages
+        const AVAILABLE_LANGUAGES = ['en', 'no', 'es', 'dk', 'se', 'fi', 'nl', 'de'];
+        
+        // Default language
+        const DEFAULT_LANGUAGE = 'en';
+        
+        // Constants for BAC calculation
+        const LEGAL_LIMITS = {
+            default: 0.5,  // Most European countries
+            en: 0.5,       // English (default)
+            no: 0.2,       // Norway
+            se: 0.2,       // Sweden
+            dk: 0.5,       // Denmark
+            fi: 0.5,       // Finland
+            nl: 0.5,       // Netherlands
+            de: 0.5,       // Germany
+            es: 0.5        // Spain
+        };
+        
+        // Initialize i18next
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Initialize i18next
+            i18next
+                .use(i18nextHttpBackend)
+                .use(i18nextBrowserLanguageDetector)
+                .init({
+                    fallbackLng: DEFAULT_LANGUAGE,
+                    supportedLngs: AVAILABLE_LANGUAGES,
+                    backend: {
+                        loadPath: '/i18n/{{lng}}.json'
+                    },
+                    detection: {
+                        order: ['path', 'localStorage', 'navigator'],
+                        lookupFromPathIndex: 0
+                    },
+                    interpolation: {
+                        escapeValue: false
+                    }
+                }, function(err, t) {
+                    // Apply translations
+                    updateContent();
+                    
+                    // Set up language change event
+                    const languageSelect = document.getElementById('language-select');
+                    if (languageSelect) {
+                        languageSelect.value = getCurrentLanguage();
+                        languageSelect.addEventListener('change', function(e) {
+                            changeLanguage(e.target.value);
+                        });
+                    }
+                });
+        });
+        
+        // Get the current language from URL
+        function getCurrentLanguage() {
+            const pathSegments = window.location.pathname.split('/');
+            
+            // Check if the first path segment is a supported language code
+            const potentialLanguage = pathSegments[1] ? pathSegments[1].toLowerCase() : '';
+            
+            if (AVAILABLE_LANGUAGES.includes(potentialLanguage)) {
+                return potentialLanguage;
+            }
+            
+            return DEFAULT_LANGUAGE;
+        }
+        
+        // Change language and redirect
+        function changeLanguage(lang) {
+            const currentLang = getCurrentLanguage();
+            
+            if (lang === currentLang) {
+                return; // No need to change
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('i18nextLng', lang);
+            
+            // Redirect to the appropriate URL
+            if (lang === DEFAULT_LANGUAGE) {
+                window.location.href = '/';
+            } else {
+                window.location.href = '/' + lang;
+            }
+        }
+        
+        // Update content with translations
+        function updateContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = i18next.t(key);
+                
+                if (translation) {
+                    if (element.tagName === 'INPUT' && element.type === 'button') {
+                        element.value = translation;
+                    } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translation;
+                    } else {
+                        element.textContent = translation;
+                    }
+                }
+            });
+            
+            // Update page title and meta description
+            document.title = i18next.t('meta.title');
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', i18next.t('meta.description'));
+            }
+            
+            // Update language selector
+            const languageSelect = document.getElementById('language-select');
+            if (languageSelect) {
+                languageSelect.value = getCurrentLanguage();
+            }
+            
+            // Update legal limit text based on current language
+            updateLegalLimit(getCurrentLanguage());
+        }
+        
+        // Update legal limit text based on country/language
+        function updateLegalLimit(language) {
+            const legalLimitInfo = document.getElementById('legal-limit-info');
+            if (legalLimitInfo && legalLimitInfo.style.display !== 'none') {
+                legalLimitInfo.textContent = i18next.t('results.legalLimit');
+                window.legalLimit = LEGAL_LIMITS[language] || LEGAL_LIMITS.default;
+            }
+        }
+    </script>
+    
+    <!-- Calculator Script -->
+    <script src="/js/calculator.js"></script>
 </body>
 </html>
