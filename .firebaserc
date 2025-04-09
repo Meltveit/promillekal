@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "promille-cal"
-  }
+  },
+  "targets": {
+    "promille-cal": {
+      "hosting": {
+        "bacometer-site": [
+          "bacometer.com"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
