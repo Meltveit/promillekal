@@ -1,6 +1,6 @@
 /**
  * Bacometer - Blood Alcohol Content Calculator
- * calculator.js - Simplified calculator logic
+ * calculator.js - Modified version with standard drink sizes
  */
 
 // Constants for BAC calculation
@@ -14,18 +14,46 @@ const METABOLISM_FACTORS = {
     fast: 1.2      // 20% faster metabolism
 };
 
-// Standard drink sizes in ml for default values
+// Standard drink sizes in ml
 const STANDARD_DRINK_SIZES = {
-    beer: 330,     // Standard beer bottle/can
-    wine: 150,     // Standard wine glass
-    spirits: 40    // Standard shot
+    // Beer sizes
+    'beer-330': 330,    // Standard beer bottle/can
+    'beer-500': 500,    // Large beer/pint
+    'beer-1000': 1000,  // Large beer mug/stein
+    
+    // Wine sizes
+    'wine-125': 125,    // Small wine glass
+    'wine-150': 150,    // Standard wine glass
+    'wine-175': 175,    // Large wine glass
+    'wine-750': 750,    // Bottle of wine
+    
+    // Spirits sizes
+    'spirits-20': 20,   // Small shot
+    'spirits-40': 40,   // Standard shot
+    'spirits-60': 60,   // Double shot
+    'spirits-700': 700, // Bottle of spirits
+    
+    // Custom
+    'custom': 0         // Custom size
 };
 
 // Alcohol percentages for standard drinks
 const ALCOHOL_PERCENTAGES = {
-    beer: 5,       // 5% ABV for regular beer
-    wine: 12,      // 12% ABV for wine
-    spirits: 40    // 40% ABV for spirits
+    'beer-330': 5,      // 5% ABV for regular beer
+    'beer-500': 5,      // 5% ABV for regular beer
+    'beer-1000': 5,     // 5% ABV for regular beer
+    
+    'wine-125': 12,     // 12% ABV for wine
+    'wine-150': 12,     // 12% ABV for wine
+    'wine-175': 12,     // 12% ABV for wine
+    'wine-750': 12,     // 12% ABV for wine
+    
+    'spirits-20': 40,   // 40% ABV for spirits
+    'spirits-40': 40,   // 40% ABV for spirits
+    'spirits-60': 40,   // 40% ABV for spirits
+    'spirits-700': 40,  // 40% ABV for spirits
+    
+    'custom': 0         // Custom percentage
 };
 
 // BAC level classifications
@@ -62,18 +90,6 @@ function initBacCalculator() {
         // Set up drink type change listeners for the first drink
         setupDrinkTypeListener('drink-type-1', 'custom-percent-1', 'drink-size-1');
         
-        // Set default sizes based on drink type for the first drink
-        document.getElementById('drink-type-1').addEventListener('change', function() {
-            const drinkType = this.value;
-            const sizeInput = document.getElementById('drink-size-1');
-            
-            if (drinkType && drinkType !== 'custom' && STANDARD_DRINK_SIZES[drinkType]) {
-                sizeInput.value = STANDARD_DRINK_SIZES[drinkType];
-            } else {
-                sizeInput.value = '';
-            }
-        });
-        
         // Set time for the first drink as current time
         document.getElementById('drink-time-1').value = `${hours}:${minutes}`;
     });
@@ -85,20 +101,88 @@ function initBacCalculator() {
 function setupDrinkTypeListener(typeId, customPercentId, sizeId) {
     const typeSelect = document.getElementById(typeId);
     const customPercentDiv = document.getElementById(customPercentId).parentElement;
+    const sizeSelect = document.getElementById(`${sizeId}-select`);
+    const customSizeDiv = document.getElementById(sizeId).parentElement;
     
+    // Handle drink type change
     typeSelect.addEventListener('change', function() {
-        if (this.value === 'custom') {
+        // Get selected value
+        const selectedType = this.value;
+        
+        // Show/hide custom percentage option
+        if (selectedType === 'custom') {
             customPercentDiv.style.display = 'block';
         } else {
             customPercentDiv.style.display = 'none';
         }
         
-        // Set default size based on drink type
-        const sizeInput = document.getElementById(sizeId);
-        if (this.value && this.value !== 'custom' && STANDARD_DRINK_SIZES[this.value]) {
-            sizeInput.value = STANDARD_DRINK_SIZES[this.value];
-        }
+        // Update size options based on drink type
+        updateSizeOptions(selectedType, sizeSelect);
+        
+        // Show/hide custom size field based on size selection
+        sizeSelect.value = 'default'; // Reset to default option
+        updateCustomSizeField(sizeSelect, customSizeDiv);
     });
+    
+    // Handle size selection change
+    if (sizeSelect) {
+        sizeSelect.addEventListener('change', function() {
+            updateCustomSizeField(this, customSizeDiv);
+        });
+    }
+}
+
+/**
+ * Updates the size selection options based on drink type
+ */
+function updateSizeOptions(drinkType, sizeSelect) {
+    if (!sizeSelect) return;
+    
+    // Clear existing options except the first one (default)
+    while (sizeSelect.options.length > 1) {
+        sizeSelect.remove(1);
+    }
+    
+    // Add appropriate size options based on drink type
+    if (drinkType === 'beer') {
+        addOption(sizeSelect, 'beer-330', '330ml (can/bottle)');
+        addOption(sizeSelect, 'beer-500', '500ml (pint)');
+        addOption(sizeSelect, 'beer-1000', '1000ml (large mug)');
+    } else if (drinkType === 'wine') {
+        addOption(sizeSelect, 'wine-125', '125ml (small glass)');
+        addOption(sizeSelect, 'wine-150', '150ml (medium glass)');
+        addOption(sizeSelect, 'wine-175', '175ml (large glass)');
+        addOption(sizeSelect, 'wine-750', '750ml (bottle)');
+    } else if (drinkType === 'spirits') {
+        addOption(sizeSelect, 'spirits-20', '20ml (small shot)');
+        addOption(sizeSelect, 'spirits-40', '40ml (standard shot)');
+        addOption(sizeSelect, 'spirits-60', '60ml (double shot)');
+        addOption(sizeSelect, 'spirits-700', '700ml (bottle)');
+    }
+    
+    // Always add custom option
+    addOption(sizeSelect, 'custom', 'Custom size');
+}
+
+/**
+ * Adds an option to a select element
+ */
+function addOption(selectElement, value, text) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = text;
+    selectElement.appendChild(option);
+}
+
+/**
+ * Updates the visibility of the custom size field based on size selection
+ */
+function updateCustomSizeField(sizeSelect, customSizeDiv) {
+    if (sizeSelect.value === 'custom') {
+        customSizeDiv.style.display = 'block';
+    } else {
+        customSizeDiv.style.display = 'none';
+    }
 }
 
 /**
@@ -112,7 +196,7 @@ function addDrinkInput() {
     const drinkItem = document.createElement('div');
     drinkItem.className = 'drink-item';
     
-    // HTML for the new drink item with i18next data attributes
+    // HTML for the new drink item with i18next data attributes and standard size options
     drinkItem.innerHTML = `
         <div class="form-group">
             <label for="drink-type-${drinkCount}" data-i18n="calculator.drinkType">Type:</label>
@@ -128,6 +212,13 @@ function addDrinkInput() {
         <div class="form-group custom-alcohol-content" style="display: none;">
             <label for="custom-percent-${drinkCount}" data-i18n="calculator.alcoholPercent">Alcohol %:</label>
             <input type="number" id="custom-percent-${drinkCount}" min="0" max="100" step="0.1">
+        </div>
+        
+        <div class="form-group">
+            <label for="drink-size-${drinkCount}-select" data-i18n="calculator.standardSize">Standard Size:</label>
+            <select id="drink-size-${drinkCount}-select" class="drink-size-select">
+                <option value="default" data-i18n="calculator.selectSize">Select size</option>
+            </select>
         </div>
         
         <div class="form-group">
@@ -159,6 +250,24 @@ function addDrinkInput() {
     const hours = String(now.getHours()).padStart(2, '0');
     const minutes = String(now.getMinutes()).padStart(2, '0');
     document.getElementById(`drink-time-${drinkCount}`).value = `${hours}:${minutes}`;
+    
+    // Handle size selection change
+    const sizeSelect = document.getElementById(`drink-size-${drinkCount}-select`);
+    const customSizeDiv = document.getElementById(`drink-size-${drinkCount}`).parentElement;
+    
+    sizeSelect.addEventListener('change', function() {
+        // Get selected value
+        const selectedOption = this.value;
+        
+        // If this is a standard size, update the size input
+        if (selectedOption !== 'default' && selectedOption !== 'custom') {
+            const sizeInput = document.getElementById(`drink-size-${drinkCount}`);
+            sizeInput.value = STANDARD_DRINK_SIZES[selectedOption];
+        }
+        
+        // Show/hide custom size field
+        updateCustomSizeField(this, customSizeDiv);
+    });
     
     // Apply translations to new element
     if (typeof i18next !== 'undefined' && i18next.isInitialized) {
@@ -291,7 +400,19 @@ function collectDrinkData() {
         if (type === 'custom') {
             alcoholPercent = parseFloat(document.getElementById(`custom-percent-${drinkNumber}`).value);
         } else {
-            alcoholPercent = ALCOHOL_PERCENTAGES[type];
+            // Check if a standard size is selected
+            const sizeSelect = document.getElementById(`drink-size-${drinkNumber}-select`);
+            if (sizeSelect && sizeSelect.value !== 'default' && sizeSelect.value !== 'custom') {
+                alcoholPercent = ALCOHOL_PERCENTAGES[sizeSelect.value];
+            } else {
+                // Use default percentage for the drink type
+                const defaultPercentages = {
+                    'beer': 5,
+                    'wine': 12,
+                    'spirits': 40
+                };
+                alcoholPercent = defaultPercentages[type] || 0;
+            }
         }
         
         if (type && size && timeStr && alcoholPercent) {

@@ -42,6 +42,103 @@
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2602658229657216" crossorigin="anonymous"></script>
+    
+    <style>
+        .feature-grid, .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .feature-item, .team-member {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .formula-box {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .about-section {
+            margin-bottom: 40px;
+        }
+        
+        .about-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            border: 4px solid var(--primary-color);
+        }
+        
+        .timeline-year {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        @media (max-width: 768px) {
+            .feature-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -97,41 +194,221 @@
         <section class="content-section">
             <div class="container">
                 <div class="content-box">
-                    <h3 data-i18n="about.whatIsTitle">What is Bacometer?</h3>
-                    <p data-i18n="about.whatIsPara1">Bacometer is a free online tool designed to help individuals estimate their blood alcohol content (BAC) based on their personal characteristics and drinking patterns. Our goal is to promote responsible drinking by providing educational information about alcohol's effects on the body.</p>
-                    <p data-i18n="about.whatIsPara2">Whether you're wondering when it might be safe to drive after consuming alcohol, or simply curious about how your body processes alcohol, Bacometer provides a scientifically-based estimation to help guide your decisions.</p>
+                    <div class="about-section">
+                        <h3 data-i18n="about.whatIsTitle">What is Bacometer?</h3>
+                        <p data-i18n="about.whatIsPara1">Bacometer is a free online tool designed to help individuals estimate their blood alcohol content (BAC) based on their personal characteristics and drinking patterns. Our goal is to promote responsible drinking by providing educational information about alcohol's effects on the body.</p>
+                        <p data-i18n="about.whatIsPara2">Whether you're wondering when it might be safe to drive after consuming alcohol, or simply curious about how your body processes alcohol, Bacometer provides a scientifically-based estimation to help guide your decisions.</p>
+                        <p data-i18n="about.whatIsPara3">Unlike simple BAC calculators, Bacometer offers comprehensive resources including information on the effects of both alcohol and cannabis, interactive visualizations of how substances affect your body over time, and educational content about responsible consumption.</p>
+                    </div>
                     
-                    <h3 data-i18n="about.howItWorksTitle">How the Calculator Works</h3>
-                    <p data-i18n="about.howItWorksPara1">Our BAC calculator uses the Widmark formula, which is a scientifically validated method for estimating blood alcohol concentration. The calculation takes into account several important factors:</p>
-                    <ul>
-                        <li data-i18n="about.factor1">Your gender (which affects the water content in your body)</li>
-                        <li data-i18n="about.factor2">Your weight (which determines the volume of distribution for alcohol)</li>
-                        <li data-i18n="about.factor3">The number of alcoholic drinks consumed</li>
-                        <li data-i18n="about.factor4">The alcohol percentage of each drink</li>
-                        <li data-i18n="about.factor5">The volume of each drink</li>
-                        <li data-i18n="about.factor6">The time elapsed since consumption</li>
-                        <li data-i18n="about.factor7">Your estimated metabolism rate</li>
-                    </ul>
-                    <p data-i18n="about.howItWorksPara2">The calculator first determines the total amount of pure alcohol consumed in grams. Then, it calculates how this alcohol is distributed throughout the body's water content. Finally, it subtracts the amount of alcohol that your liver has processed over time.</p>
+                    <div class="about-section">
+                        <h3 data-i18n="about.whyUseTitle">Why Use Bacometer?</h3>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <div class="feature-icon">🔍</div>
+                                <h4 data-i18n="about.feature1Title">Scientific Accuracy</h4>
+                                <p data-i18n="about.feature1Text">Based on validated scientific formulas that account for your unique body characteristics and consumption patterns.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">📊</div>
+                                <h4 data-i18n="about.feature2Title">Visual Timeline</h4>
+                                <p data-i18n="about.feature2Text">See how your BAC changes over time with interactive charts that help you understand when it's safe to drive.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🌍</div>
+                                <h4 data-i18n="about.feature3Title">Multiple Languages</h4>
+                                <p data-i18n="about.feature3Text">Available in 8 different languages with country-specific legal driving limits and relevant information.</p>
+                            </div>
+                            <div class="feature-item">
+                                <div class="feature-icon">🔒</div>
+                                <h4 data-i18n="about.feature4Title">Privacy Focused</h4>
+                                <p data-i18n="about.feature4Text">All calculations are done directly in your browser. We don't store any of your personal information or consumption habits.</p>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <h3 data-i18n="about.accuracyTitle">Accuracy and Limitations</h3>
-                    <p data-i18n="about.accuracyPara1">While our calculator provides a reasonable estimate of BAC based on scientific principles, it's important to understand its limitations:</p>
-                    <ul>
-                        <li data-i18n="about.limitation1">Individual metabolic rates can vary significantly</li>
-                        <li data-i18n="about.limitation2">Food consumption can slow alcohol absorption</li>
-                        <li data-i18n="about.limitation3">Medical conditions can affect how your body processes alcohol</li>
-                        <li data-i18n="about.limitation4">Medications can interact with alcohol and affect its processing</li>
-                        <li data-i18n="about.limitation5">The calculator cannot account for all biological variations</li>
-                    </ul>
-                    <p data-i18n="about.accuracyPara2">For these reasons, you should never use Bacometer as the sole basis for deciding whether to drive or operate machinery. Always err on the side of caution when it comes to alcohol consumption.</p>
+                    <div class="about-section">
+                        <h3 data-i18n="about.howItWorksTitle">How the Calculator Works</h3>
+                        <p data-i18n="about.howItWorksPara1">Our BAC calculator uses the Widmark formula, which is a scientifically validated method for estimating blood alcohol concentration. The calculation takes into account several important factors:</p>
+                        <ul>
+                            <li data-i18n="about.factor1">Your gender (which affects the water content in your body)</li>
+                            <li data-i18n="about.factor2">Your weight (which determines the volume of distribution for alcohol)</li>
+                            <li data-i18n="about.factor3">The number of alcoholic drinks consumed</li>
+                            <li data-i18n="about.factor4">The alcohol percentage of each drink</li>
+                            <li data-i18n="about.factor5">The volume of each drink</li>
+                            <li data-i18n="about.factor6">The time elapsed since consumption</li>
+                            <li data-i18n="about.factor7">Your estimated metabolism rate</li>
+                        </ul>
+                        
+                        <div class="formula-box">
+                            <h4 data-i18n="about.widmarkTitle">The Widmark Formula</h4>
+                            <p data-i18n="about.widmarkFormula">BAC = (A × 0.789 × 100) / (W × r) - (MR × DP)</p>
+                            <p data-i18n="about.formulaWhere">Where:</p>
+                            <ul>
+                                <li data-i18n="about.formulaA">A = Total alcohol consumed in grams</li>
+                                <li data-i18n="about.formula789">0.789 = Density of ethyl alcohol (g/mL)</li>
+                                <li data-i18n="about.formulaW">W = Body weight in grams</li>
+                                <li data-i18n="about.formulaR">r = Gender constant (0.68 for men, 0.55 for women)</li>
+                                <li data-i18n="about.formulaMR">MR = Metabolism rate (typically 0.015% per hour)</li>
+                                <li data-i18n="about.formulaDP">DP = Hours since first drink</li>
+                            </ul>
+                        </div>
+                        
+                        <p data-i18n="about.howItWorksPara2">The calculator first determines the total amount of pure alcohol consumed in grams. Then, it calculates how this alcohol is distributed throughout the body's water content. Finally, it subtracts the amount of alcohol that your liver has processed over time.</p>
+                    </div>
                     
-                    <h3 data-i18n="about.ourMissionTitle">Our Mission</h3>
-                    <p data-i18n="about.ourMissionPara1">At Bacometer, our mission is to provide free, accessible education about alcohol's effects on the body. We believe that by understanding how alcohol affects you personally, you can make more informed decisions about your consumption.</p>
-                    <p data-i18n="about.ourMissionPara2">We also strive to promote responsible drinking habits and reduce alcohol-related incidents by helping people understand when they've had too much to drive or engage in other risky activities.</p>
+                    <div class="about-section">
+                        <h3 data-i18n="about.scienceTitle">The Science Behind BAC</h3>
+                        <p data-i18n="about.sciencePara1">When you consume alcohol, it's absorbed through the lining of your stomach and small intestine directly into your bloodstream. Unlike food, alcohol doesn't require digestion. Once in your bloodstream, alcohol is distributed throughout your body's tissues and fluids.</p>
+                        
+                        <p data-i18n="about.sciencePara2">Your body can only metabolize a certain amount of alcohol per hour, primarily through your liver. The enzyme alcohol dehydrogenase (ADH) converts alcohol into acetaldehyde, which is then further broken down into acetic acid, and eventually into carbon dioxide and water.</p>
+                        
+                        <p data-i18n="about.sciencePara3">Most adults can metabolize about one standard drink per hour (approximately 10 grams of pure alcohol). However, metabolism rates vary based on genetic factors, liver function, age, and even some medications.</p>
+                        
+                        <h4 data-i18n="about.standardDrinkTitle">What is a Standard Drink?</h4>
+                        <p data-i18n="about.standardDrinkPara">A standard drink contains approximately 10-14 grams of pure alcohol, but the exact amount varies by country. In most European countries, a standard drink contains about 10 grams of alcohol, while in the United States, it's about 14 grams. Here are some common examples:</p>
+                        <ul>
+                            <li data-i18n="about.standardBeer">330ml of beer (5% alcohol) ≈ 13g alcohol</li>
+                            <li data-i18n="about.standardWine">150ml of wine (12% alcohol) ≈ 14g alcohol</li>
+                            <li data-i18n="about.standardSpirits">40ml of spirits (40% alcohol) ≈ 13g alcohol</li>
+                        </ul>
+                    </div>
                     
-                    <h3 data-i18n="about.contactTitle">Contact Us</h3>
-                    <p data-i18n="about.contactPara">If you have questions, suggestions, or feedback about Bacometer, please reach out to us at:</p>
-                    <p><a href="mailto:contact@bacometer.com">contact@bacometer.com</a></p>
+                    <div class="about-section">
+                        <h3 data-i18n="about.accuracyTitle">Accuracy and Limitations</h3>
+                        <p data-i18n="about.accuracyPara1">While our calculator provides a reasonable estimate of BAC based on scientific principles, it's important to understand its limitations:</p>
+                        <ul>
+                            <li data-i18n="about.limitation1">Individual metabolic rates can vary significantly</li>
+                            <li data-i18n="about.limitation2">Food consumption can slow alcohol absorption</li>
+                            <li data-i18n="about.limitation3">Medical conditions can affect how your body processes alcohol</li>
+                            <li data-i18n="about.limitation4">Medications can interact with alcohol and affect its processing</li>
+                            <li data-i18n="about.limitation5">The calculator cannot account for all biological variations</li>
+                            <li data-i18n="about.limitation6">Genetics play a role in how your body processes alcohol</li>
+                            <li data-i18n="about.limitation7">Fatigue, stress, and other factors can amplify alcohol's effects</li>
+                        </ul>
+                        <p data-i18n="about.accuracyPara2">For these reasons, you should never use Bacometer as the sole basis for deciding whether to drive or operate machinery. Always err on the side of caution when it comes to alcohol consumption.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.legalLimitsTitle">Legal BAC Limits for Driving Worldwide</h3>
+                        <p data-i18n="about.legalLimitsPara">Legal limits for blood alcohol content when driving vary considerably around the world. Here are the limits for some countries:</p>
+                        <ul>
+                            <li data-i18n="about.limitZero">0.00‰: Prohibited completely in several countries including Hungary, Saudi Arabia, and United Arab Emirates</li>
+                            <li data-i18n="about.limit02">0.20‰ (0.02%): Norway, Sweden, Poland</li>
+                            <li data-i18n="about.limit03">0.30‰ (0.03%): India, Japan</li>
+                            <li data-i18n="about.limit05">0.50‰ (0.05%): Most European countries including Germany, France, Spain, Italy, Netherlands</li>
+                            <li data-i18n="about.limit08">0.80‰ (0.08%): United Kingdom (except Scotland), United States, Canada</li>
+                        </ul>
+                        <p data-i18n="about.legalLimitsNote">Note: Many countries have lower or zero tolerance limits for novice drivers, professional drivers, and drivers of commercial vehicles.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.factsTitle">Interesting Facts About Alcohol</h3>
+                        <ul>
+                            <li data-i18n="about.fact1">Women generally have higher BAC than men after consuming the same amount of alcohol, due to differences in body composition and metabolism.</li>
+                            <li data-i18n="about.fact2">Alcohol is classified as a depressant because it slows down vital functions, resulting in slurred speech, unsteady movement, disturbed perceptions, and an inability to react quickly.</li>
+                            <li data-i18n="about.fact3">About 20% of alcohol is absorbed directly into the bloodstream through the stomach walls, with the remaining 80% absorbed through the small intestine.</li>
+                            <li data-i18n="about.fact4">Carbonated alcoholic beverages (like champagne or mixed drinks with soda) tend to increase the rate of alcohol absorption.</li>
+                            <li data-i18n="about.fact5">While coffee might make a person feel more awake, it doesn't reduce BAC or help the body metabolize alcohol faster.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.ourMissionTitle">Our Mission</h3>
+                        <p data-i18n="about.ourMissionPara1">At Bacometer, our mission is to provide free, accessible education about alcohol's effects on the body. We believe that by understanding how alcohol affects you personally, you can make more informed decisions about your consumption.</p>
+                        <p data-i18n="about.ourMissionPara2">We also strive to promote responsible drinking habits and reduce alcohol-related incidents by helping people understand when they've had too much to drive or engage in other risky activities.</p>
+                        <p data-i18n="about.ourMissionPara3">Our commitment extends to providing unbiased, scientifically accurate information about both alcohol and cannabis, enabling users to make safer choices about substance use in general.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.historyTitle">History of Bacometer</h3>
+                        <p data-i18n="about.historyPara1">Bacometer was launched in 2023 by a small team of developers and health experts concerned about the rising rates of alcohol-related incidents worldwide. We noticed that while there was plenty of general advice about responsible drinking, there weren't many accessible tools that could provide personalized insights.</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">2022</div>
+                                <p data-i18n="about.timeline2022">Initial concept development and research into BAC calculation formulas</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">Early 2023</div>
+                                <p data-i18n="about.timeline2023a">First version of Bacometer launched with basic BAC calculation</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">Mid 2023</div>
+                                <p data-i18n="about.timeline2023b">Added multiple language support and country-specific legal limits</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">Late 2023</div>
+                                <p data-i18n="about.timeline2023c">Introduced detailed educational content about alcohol effects</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2024</div>
+                                <p data-i18n="about.timeline2024">Added cannabis calculator and expanded resources</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2025</div>
+                                <p data-i18n="about.timeline2025">Continuous improvement with advanced features and expanded educational content</p>
+                            </div>
+                        </div>
+                        
+                        <p data-i18n="about.historyPara2">What began as a simple calculator has grown into a comprehensive platform offering education about both alcohol and cannabis, with plans to continue expanding our tools and resources to help people make informed decisions about substance use.</p>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.faqTitle">Frequently Asked Questions</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-i18n="about.faq1q">How accurate is the BAC calculator?</div>
+                            <p data-i18n="about.faq1a">Our BAC calculator uses the scientifically validated Widmark formula and provides a good estimate for most people. However, individual variations in metabolism, food consumption, and other factors mean it should be used as a guide rather than an exact measurement. Always err on the side of caution when making decisions based on BAC estimates.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-i18n="about.faq2q">Is Bacometer available as a mobile app?</div>
+                            <p data-i18n="about.faq2a">Currently, Bacometer is available as a mobile-responsive website that works well on smartphones and tablets. We're exploring the possibility of developing dedicated mobile apps in the future.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-i18n="about.faq3q">Does Bacometer store my drinking information?</div>
+                            <p data-i18n="about.faq3a">No. All calculations are performed directly in your browser. We do not store any personal information or drinking data on our servers. Your privacy is important to us.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-i18n="about.faq4q">How do I interpret the BAC results?</div>
+                            <p data-i18n="about.faq4a">Your BAC result shows the estimated percentage of alcohol in your bloodstream. The results page explains what effects you might experience at your current level and estimates when you'll be sober enough to legally drive. Check out our Alcohol Effects page for more detailed information about different BAC levels.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-i18n="about.faq5q">Why do you include a cannabis calculator?</div>
+                            <p data-i18n="about.faq5a">We believe in providing educational tools for all commonly used substances. Cannabis is increasingly legal in many regions, and understanding its effects can help users make safer choices. Like with alcohol, we aim to provide unbiased, science-based information.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.teamTitle">Our Team</h3>
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <h4 data-i18n="about.developerTitle">Development Team</h4>
+                                <p data-i18n="about.developerText">Our developers work to ensure Bacometer is accurate, responsive, and accessible across all devices. We're continually improving our algorithms and adding new features based on the latest research and user feedback.</p>
+                            </div>
+                            <div class="team-member">
+                                <h4 data-i18n="about.scientificTitle">Scientific Advisors</h4>
+                                <p data-i18n="about.scientificText">We work with health professionals and researchers to ensure our calculations are based on the most current scientific understanding of how substances affect the human body.</p>
+                            </div>
+                            <div class="team-member">
+                                <h4 data-i18n="about.translatorTitle">Translation Team</h4>
+                                <p data-i18n="about.translatorText">Our international team works to make Bacometer accessible in multiple languages, ensuring accurate translations that account for cultural context and country-specific information.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-section">
+                        <h3 data-i18n="about.contactTitle">Contact Us</h3>
+                        <p data-i18n="about.contactPara">If you have questions, suggestions, or feedback about Bacometer, please reach out to us at:</p>
+                        <p><a href="mailto:contact@bacometer.com">contact@bacometer.com</a></p>
+                        
+                        <h4 data-i18n="about.feedbackTitle">We Value Your Feedback</h4>
+                        <p data-i18n="about.feedbackText">Bacometer is constantly evolving, and we rely on user feedback to improve our tools and resources. If you have suggestions for new features, notice any inaccuracies, or have ideas for how we could better serve our community, we'd love to hear from you.</p>
+                    </div>
                     
                     <div class="disclaimer">
                         <h4 data-i18n="about.disclaimerTitle">Important Disclaimer</h4>

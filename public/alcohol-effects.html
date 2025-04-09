@@ -103,6 +103,7 @@
         
         .tab-buttons {
             display: flex;
+            flex-wrap: wrap;
             border-bottom: 2px solid var(--border-color);
             margin-bottom: 20px;
         }
@@ -116,6 +117,7 @@
             font-weight: 500;
             cursor: pointer;
             margin-right: 10px;
+            margin-bottom: 5px;
             transition: all 0.3s ease;
         }
         
@@ -151,6 +153,423 @@
         
         .reference-list li {
             margin-bottom: 10px;
+        }
+        
+        .bac-introduction {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .bac-intro-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .bac-intro-visual {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .country-limits {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .country-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .country-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .limit {
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+        
+        .limit-low {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .limit-medium {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .limit-high {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .effects-detail {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+        
+        .effects-list, .effects-science {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .effects-science {
+            background-color: #f0f7ff;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+        
+        .driving-info, .medical-info {
+            margin-top: 15px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .driving-info {
+            background-color: #e2e3e5;
+        }
+        
+        .driving-info.warning {
+            background-color: #fff3cd;
+        }
+        
+        .driving-info.danger {
+            background-color: #f8d7da;
+        }
+        
+        .medical-info.warning {
+            background-color: #fff3cd;
+        }
+        
+        .medical-info.danger {
+            background-color: #f8d7da;
+        }
+        
+        .medical-info.danger-critical {
+            background-color: #dc3545;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .driving-icon, .medical-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .drink-equivalent {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .emergency-indicators {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .emergency-sign {
+            display: flex;
+            align-items: center;
+            background-color: #f8d7da;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        
+        .emergency-icon {
+            font-size: 1.8em;
+            margin-right: 10px;
+        }
+        
+        .emergency-tips {
+            background-color: #d1ecf1;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+        }
+        
+        .alcohol-metabolism {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .metabolism-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .metabolism-steps::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background-color: var(--primary-color);
+            z-index: 1;
+        }
+        
+        .metabolism-step {
+            position: relative;
+            z-index: 2;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .step-content {
+            text-align: center;
+            max-width: 150px;
+            font-size: 0.9em;
+        }
+        
+        .standard-drinks {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .drink-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .drink-header {
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .drink-content {
+            padding: 15px;
+        }
+        
+        .drink-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .organ-effects {
+            margin: 30px 0;
+        }
+        
+        .organ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .organ-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .organ-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            display: block;
+            text-align: center;
+        }
+        
+        .organ-title {
+            border-bottom: 2px solid var(--light-grey);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+        
+        .risk-level {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .risk-bars {
+            display: flex;
+            margin-left: 10px;
+        }
+        
+        .risk-bar {
+            width: 8px;
+            height: 16px;
+            background-color: #dee2e6;
+            margin-right: 2px;
+            border-radius: 1px;
+        }
+        
+        .risk-bar.active {
+            background-color: var(--danger-color);
+        }
+        
+        .guidelines-section {
+            margin: 30px 0;
+        }
+        
+        .guideline-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .guideline-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .guideline-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .guideline-icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .medication-interactions {
+            background-color: #f8d7da;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .med-interaction-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .interaction-item {
+            background-color: white;
+            padding: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .interaction-title {
+            font-weight: bold;
+            color: var(--danger-color);
+            margin-bottom: 5px;
+        }
+        
+        .helpline-section {
+            background-color: #d1ecf1;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .helplines {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .helpline-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .helpline-country {
+            font-weight: bold;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .helpline-phone {
+            color: var(--primary-dark);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .effects-detail {
+                flex-direction: column;
+            }
+            
+            .emergency-indicators {
+                grid-template-columns: 1fr;
+            }
+            
+            .metabolism-steps {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-left: 30px;
+            }
+            
+            .metabolism-steps::before {
+                left: 25px;
+                right: auto;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                height: auto;
+            }
+            
+            .metabolism-step {
+                margin-bottom: 30px;
+            }
+            
+            .step-content {
+                margin-left: 60px;
+                margin-top: -65px;
+                text-align: left;
+                max-width: none;
+            }
         }
     </style>
 </head>
@@ -213,23 +632,65 @@
                             <button class="tab-button active" data-tab="immediate-effects" data-i18n="effects.tabs.immediate">Immediate Effects</button>
                             <button class="tab-button" data-tab="long-term-effects" data-i18n="effects.tabs.longTerm">Long-term Effects</button>
                             <button class="tab-button" data-tab="responsible-drinking" data-i18n="effects.tabs.responsible">Responsible Drinking</button>
+                            <button class="tab-button" data-tab="alcohol-metabolism" data-i18n="effects.tabs.metabolism">How Alcohol is Processed</button>
+                            <button class="tab-button" data-tab="getting-help" data-i18n="effects.tabs.help">Getting Help</button>
                         </div>
                         
                         <div id="immediate-effects" class="tab-content active">
                             <h3 data-i18n="effects.immediateTitle">Immediate Effects of Alcohol by BAC Level</h3>
                             <p data-i18n="effects.immediateIntro">Blood Alcohol Content (BAC) is a measure of the amount of alcohol in your bloodstream, expressed as a percentage. As your BAC rises, alcohol's effects on your mind and body become more pronounced. Below is a timeline of effects at different BAC levels:</p>
                             
+                            <div class="bac-introduction">
+                                <div class="bac-intro-content">
+                                    <h4 data-i18n="effects.whatIsBacTitle">What is BAC?</h4>
+                                    <p data-i18n="effects.whatIsBacText">Blood Alcohol Concentration (BAC) is measured in grams of alcohol per 100 milliliters of blood. A BAC of 0.08% (or 0.8‰) means there are 0.08 grams of alcohol per 100 milliliters of blood.</p>
+                                    <p data-i18n="effects.measuringBacText">BAC is influenced by several factors:</p>
+                                    <ul>
+                                        <li data-i18n="effects.bacFactor1">The amount of alcohol consumed</li>
+                                        <li data-i18n="effects.bacFactor2">The time period over which you drink</li>
+                                        <li data-i18n="effects.bacFactor3">Your body weight and composition</li>
+                                        <li data-i18n="effects.bacFactor4">Your gender (biological differences in water content)</li>
+                                        <li data-i18n="effects.bacFactor5">Whether you've eaten before or while drinking</li>
+                                        <li data-i18n="effects.bacFactor6">Your liver function and overall health</li>
+                                    </ul>
+                                </div>
+                                <div class="bac-intro-visual">
+                                    <div class="country-limits">
+                                        <h5 data-i18n="effects.drivingLimitsTitle">Legal Driving Limits by Country</h5>
+                                        <ul class="country-list">
+                                            <li><span class="country-name">Norway</span><span class="limit limit-low">0.2‰</span></li>
+                                            <li><span class="country-name">Sweden</span><span class="limit limit-low">0.2‰</span></li>
+                                            <li><span class="country-name">Germany</span><span class="limit limit-medium">0.5‰</span></li>
+                                            <li><span class="country-name">France</span><span class="limit limit-medium">0.5‰</span></li>
+                                            <li><span class="country-name">Spain</span><span class="limit limit-medium">0.5‰</span></li>
+                                            <li><span class="country-name">UK</span><span class="limit limit-high">0.8‰</span></li>
+                                            <li><span class="country-name">USA</span><span class="limit limit-high">0.8‰</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="effects-timeline">
                                 <div class="bac-marker">
                                     <div class="bac-value-bubble">0.02‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level1Title">Slight Effects</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level1Point1">Slight mood elevation</li>
-                                            <li data-i18n="effects.level1Point2">Mild relaxation</li>
-                                            <li data-i18n="effects.level1Point3">Slightly warmer body temperature</li>
-                                            <li data-i18n="effects.level1Point4">Minimal cognitive or motor skill effects</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level1Point1">Slight mood elevation</li>
+                                                    <li data-i18n="effects.level1Point2">Mild relaxation</li>
+                                                    <li data-i18n="effects.level1Point3">Slightly warmer body temperature</li>
+                                                    <li data-i18n="effects.level1Point4">Minimal cognitive or motor skill effects</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science1">Alcohol begins stimulating dopamine release in the brain's reward center, creating mild pleasurable feelings. At this level, alcohol is starting to affect your brain's prefrontal cortex, which can lead to slight relaxation as your brain's control center is minimally inhibited.</p>
+                                            </div>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks1">≈ 1 standard drink for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -237,14 +698,27 @@
                                     <div class="bac-value-bubble">0.05‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level2Title">Relaxation</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level2Point1">Increased relaxation</li>
-                                            <li data-i18n="effects.level2Point2">Mild euphoria possible</li>
-                                            <li data-i18n="effects.level2Point3">Slightly impaired judgment and memory</li>
-                                            <li data-i18n="effects.level2Point4">Reduced inhibition</li>
-                                            <li data-i18n="effects.level2Point5">Slightly impaired reaction time</li>
-                                            <li data-i18n="effects.legal">Legal driving limit in many European countries</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level2Point1">Increased relaxation</li>
+                                                    <li data-i18n="effects.level2Point2">Mild euphoria possible</li>
+                                                    <li data-i18n="effects.level2Point3">Slightly impaired judgment and memory</li>
+                                                    <li data-i18n="effects.level2Point4">Reduced inhibition</li>
+                                                    <li data-i18n="effects.level2Point5">Slightly impaired reaction time</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science2">Your brain's limbic system, controlling emotions, is now affected. GABA (an inhibitory neurotransmitter) activity increases while glutamate (an excitatory neurotransmitter) decreases, causing relaxation. Your judgment begins to diminish as your prefrontal cortex function decreases.</p>
+                                            </div>
+                                        </div>
+                                        <div class="driving-info">
+                                            <span class="driving-icon">🚗</span>
+                                            <span class="driving-text" data-i18n="effects.legal">Legal driving limit in many European countries</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks2">≈ 2 standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -252,15 +726,28 @@
                                     <div class="bac-value-bubble">0.08‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level3Title">Impairment</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level3Point1">Impaired coordination and balance</li>
-                                            <li data-i18n="effects.level3Point2">Clearly reduced reaction time</li>
-                                            <li data-i18n="effects.level3Point3">Reduced concentration and short-term memory</li>
-                                            <li data-i18n="effects.level3Point4">Decreased visual function and peripheral vision</li>
-                                            <li data-i18n="effects.level3Point5">Reduced ability to process information</li>
-                                            <li data-i18n="effects.level3Point6">Impaired judgment</li>
-                                            <li data-i18n="effects.legal2">Legal driving limit in the US and UK</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level3Point1">Impaired coordination and balance</li>
+                                                    <li data-i18n="effects.level3Point2">Clearly reduced reaction time</li>
+                                                    <li data-i18n="effects.level3Point3">Reduced concentration and short-term memory</li>
+                                                    <li data-i18n="effects.level3Point4">Decreased visual function and peripheral vision</li>
+                                                    <li data-i18n="effects.level3Point5">Reduced ability to process information</li>
+                                                    <li data-i18n="effects.level3Point6">Impaired judgment</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science3">Your cerebellum, which controls motor coordination, is now significantly affected. The hippocampus, crucial for forming new memories, begins to function less effectively. Blood vessels dilate, causing the flushed appearance many people get when drinking.</p>
+                                            </div>
+                                        </div>
+                                        <div class="driving-info warning">
+                                            <span class="driving-icon">⚠️</span>
+                                            <span class="driving-text" data-i18n="effects.legal2">Legal driving limit in the US and UK, but driving ability is significantly impaired</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks3">≈ 3-4 standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -268,14 +755,30 @@
                                     <div class="bac-value-bubble">0.10‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level4Title">Significant Impairment</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level4Point1">Clear deterioration of reaction time and control</li>
-                                            <li data-i18n="effects.level4Point2">Slurred speech</li>
-                                            <li data-i18n="effects.level4Point3">Poor coordination</li>
-                                            <li data-i18n="effects.level4Point4">Slowed thinking</li>
-                                            <li data-i18n="effects.level4Point5">Reduced fine motor control</li>
-                                            <li data-i18n="effects.level4Point6">Euphoria may be intense</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level4Point1">Clear deterioration of reaction time and control</li>
+                                                    <li data-i18n="effects.level4Point2">Slurred speech</li>
+                                                    <li data-i18n="effects.level4Point3">Poor coordination</li>
+                                                    <li data-i18n="effects.level4Point4">Slowed thinking</li>
+                                                    <li data-i18n="effects.level4Point5">Reduced fine motor control</li>
+                                                    <li data-i18n="effects.level4Point6">Euphoria may be intense</li>
+                                                    <li data-i18n="effects.level4Point7">Emotional volatility</li>
+                                                    <li data-i18n="effects.level4Point8">Double vision may begin</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science4">Alcohol is suppressing your central nervous system function. Motor areas of your brain show decreased activity. Eye muscle control is impaired, affecting vision. Your liver is working at maximum capacity but can only process about one standard drink per hour.</p>
+                                            </div>
+                                        </div>
+                                        <div class="driving-info danger">
+                                            <span class="driving-icon">🚫</span>
+                                            <span class="driving-text" data-i18n="effects.drivingDangerous">Driving is extremely dangerous and illegal at this level</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks4">≈ 4-5 standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -283,13 +786,30 @@
                                     <div class="bac-value-bubble">0.15‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level5Title">Severe Impairment</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level5Point1">Substantial impairment in all physical and mental functions</li>
-                                            <li data-i18n="effects.level5Point2">Major loss of balance</li>
-                                            <li data-i18n="effects.level5Point3">Vomiting may occur (unless tolerance is developed)</li>
-                                            <li data-i18n="effects.level5Point4">Significant risk of blackout</li>
-                                            <li data-i18n="effects.level5Point5">Potential for dangerous behavior</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level5Point1">Substantial impairment in all physical and mental functions</li>
+                                                    <li data-i18n="effects.level5Point2">Major loss of balance</li>
+                                                    <li data-i18n="effects.level5Point3">Vomiting may occur (unless tolerance is developed)</li>
+                                                    <li data-i18n="effects.level5Point4">Significant risk of blackout</li>
+                                                    <li data-i18n="effects.level5Point5">Potential for dangerous behavior</li>
+                                                    <li data-i18n="effects.level5Point6">Mood swings, possible aggression</li>
+                                                    <li data-i18n="effects.level5Point7">Difficulty standing and walking</li>
+                                                    <li data-i18n="effects.level5Point8">Severely slurred speech</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science5">The alcohol is significantly suppressing your brain's visual cortex and vestibular system (balance). Your hippocampus function is severely impaired, leading to potential blackouts - where you may remain conscious but stop forming new memories. The vomiting reflex may activate as your body tries to eliminate the alcohol it perceives as a toxin.</p>
+                                            </div>
+                                        </div>
+                                        <div class="medical-info warning">
+                                            <span class="medical-icon">⚕️</span>
+                                            <span class="medical-text" data-i18n="effects.medicalAttention1">Close monitoring recommended</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks5">≈ 6-7 standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -297,13 +817,30 @@
                                     <div class="bac-value-bubble">0.25‰</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level6Title">Alcohol Poisoning Risk</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level6Point1">All mental, physical, and sensory functions severely impaired</li>
-                                            <li data-i18n="effects.level6Point2">Increased risk of asphyxiation from choking on vomit</li>
-                                            <li data-i18n="effects.level6Point3">Potential for alcohol poisoning</li>
-                                            <li data-i18n="effects.level6Point4">Blackouts likely</li>
-                                            <li data-i18n="effects.level6Point5">Loss of consciousness may occur</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level6Point1">All mental, physical, and sensory functions severely impaired</li>
+                                                    <li data-i18n="effects.level6Point2">Increased risk of asphyxiation from choking on vomit</li>
+                                                    <li data-i18n="effects.level6Point3">Potential for alcohol poisoning</li>
+                                                    <li data-i18n="effects.level6Point4">Blackouts likely</li>
+                                                    <li data-i18n="effects.level6Point5">Loss of consciousness may occur</li>
+                                                    <li data-i18n="effects.level6Point6">Little or no comprehension of surroundings</li>
+                                                    <li data-i18n="effects.level6Point7">Suppressed reflexes</li>
+                                                    <li data-i18n="effects.level6Point8">Respiratory depression</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science6">Alcohol is now affecting your brain stem, which controls basic life functions. Your body's natural reflexes that protect your airway are significantly impaired. Heart rate may become irregular and blood pressure can drop. The respiratory center in your brain stem is suppressed, leading to slower, shallower breathing.</p>
+                                            </div>
+                                        </div>
+                                        <div class="medical-info danger">
+                                            <span class="medical-icon">🚑</span>
+                                            <span class="medical-text" data-i18n="effects.medicalAttention2">Medical attention likely needed</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks6">≈ 10-12 standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                                 
@@ -311,12 +848,29 @@
                                     <div class="bac-value-bubble">0.35‰+</div>
                                     <div class="bac-effects">
                                         <h4 data-i18n="effects.level7Title">Life-Threatening</h4>
-                                        <ul>
-                                            <li data-i18n="effects.level7Point1">Loss of consciousness</li>
-                                            <li data-i18n="effects.level7Point2">Danger of respiratory arrest</li>
-                                            <li data-i18n="effects.level7Point3">Possible death</li>
-                                            <li data-i18n="effects.level7Point4">Medical emergency requiring immediate attention</li>
-                                        </ul>
+                                        <div class="effects-detail">
+                                            <div class="effects-list">
+                                                <h5 data-i18n="effects.physicalTitle">Physical & Mental Effects:</h5>
+                                                <ul>
+                                                    <li data-i18n="effects.level7Point1">Loss of consciousness</li>
+                                                    <li data-i18n="effects.level7Point2">Danger of respiratory arrest</li>
+                                                    <li data-i18n="effects.level7Point3">Possible death</li>
+                                                    <li data-i18n="effects.level7Point4">Medical emergency requiring immediate attention</li>
+                                                    <li data-i18n="effects.level7Point5">Coma possible</li>
+                                                    <li data-i18n="effects.level7Point6">Hypothermia (low body temperature)</li>
+                                                    <li data-i18n="effects.level7Point7">Suppression of gag reflex</li>
+                                                </ul>
+                                            </div>
+                                            <div class="effects-science">
+                                                <h5 data-i18n="effects.scienceTitle">What's happening in your body:</h5>
+                                                <p data-i18n="effects.science7">At this extreme level, alcohol is severely depressing your central nervous system. Your brain stem functions controlling heartbeat and breathing are dangerously compromised. Alcohol's sedative effects have overwhelmed your brain's ability to remain conscious. Your body temperature regulation is failing. Without medical intervention, these BAC levels can be fatal.</p>
+                                            </div>
+                                        </div>
+                                        <div class="medical-info danger-critical">
+                                            <span class="medical-icon">⚠️</span>
+                                            <span class="medical-text" data-i18n="effects.medicalAttention3">MEDICAL EMERGENCY - Call emergency services immediately</span>
+                                        </div>
+                                        <div class="drink-equivalent" data-i18n="effects.drinks7">≈ 15+ standard drinks for a 70kg (154lb) person</div>
                                     </div>
                                 </div>
                             </div>
@@ -324,16 +878,50 @@
                             <div class="alert-box">
                                 <h4 data-i18n="effects.emergencyTitle">Recognizing Alcohol Poisoning</h4>
                                 <p data-i18n="effects.emergencyText">Alcohol poisoning is a serious and potentially life-threatening condition. Call emergency services immediately if someone shows these signs:</p>
-                                <ul>
-                                    <li data-i18n="effects.poisoning1">Confusion, stupor</li>
-                                    <li data-i18n="effects.poisoning2">Vomiting</li>
-                                    <li data-i18n="effects.poisoning3">Seizures</li>
-                                    <li data-i18n="effects.poisoning4">Slow breathing (less than 8 breaths per minute)</li>
-                                    <li data-i18n="effects.poisoning5">Irregular breathing (10 seconds or more between breaths)</li>
-                                    <li data-i18n="effects.poisoning6">Blue-tinged or pale skin</li>
-                                    <li data-i18n="effects.poisoning7">Low body temperature (hypothermia)</li>
-                                    <li data-i18n="effects.poisoning8">Unconsciousness/passing out</li>
-                                </ul>
+                                <div class="emergency-indicators">
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">😵</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning1">Confusion, stupor, coma</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">🤢</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning2">Vomiting while unconscious</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">⚡</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning3">Seizures</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">🫁</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning4">Slow breathing (less than 8 breaths per minute)</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">⏱️</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning5">Irregular breathing (10+ seconds between breaths)</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">💙</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning6">Blue-tinged or pale skin</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">🥶</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning7">Low body temperature (hypothermia)</div>
+                                    </div>
+                                    <div class="emergency-sign">
+                                        <div class="emergency-icon">😴</div>
+                                        <div class="emergency-text" data-i18n="effects.poisoning8">Unconsciousness/passing out</div>
+                                    </div>
+                                </div>
+                                <div class="emergency-tips">
+                                    <h5 data-i18n="effects.whatToDoTitle">What to do while waiting for help:</h5>
+                                    <ul>
+                                        <li data-i18n="effects.emergencyTip1">Keep the person on their side to prevent choking if they vomit</li>
+                                        <li data-i18n="effects.emergencyTip2">Try to keep them awake if possible</li>
+                                        <li data-i18n="effects.emergencyTip3">Monitor their breathing</li>
+                                        <li data-i18n="effects.emergencyTip4">Do not give them coffee or try to make them "walk it off"</li>
+                                        <li data-i18n="effects.emergencyTip5">Stay with them until medical help arrives</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         
@@ -341,89 +929,326 @@
                             <h3 data-i18n="effects.longTermTitle">Long-term Effects of Alcohol Consumption</h3>
                             <p data-i18n="effects.longTermIntro">Regular heavy drinking and alcohol dependency can lead to serious health problems over time. The following are potential long-term effects of excessive alcohol consumption:</p>
                             
-                            <h4 data-i18n="effects.brainTitle">Brain and Nervous System</h4>
-                            <ul>
-                                <li data-i18n="effects.brain1">Brain damage and cognitive impairment</li>
-                                <li data-i18n="effects.brain2">Increased risk of dementia</li>
-                                <li data-i18n="effects.brain3">Wernicke-Korsakoff syndrome (a serious neurological disorder)</li>
-                                <li data-i18n="effects.brain4">Depression and anxiety</li>
-                                <li data-i18n="effects.brain5">Peripheral neuropathy (nerve damage)</li>
-                            </ul>
-                            
-                            <h4 data-i18n="effects.liverTitle">Liver</h4>
-                            <ul>
-                                <li data-i18n="effects.liver1">Fatty liver disease</li>
-                                <li data-i18n="effects.liver2">Alcoholic hepatitis</li>
-                                <li data-i18n="effects.liver3">Liver fibrosis</li>
-                                <li data-i18n="effects.liver4">Cirrhosis (irreversible scarring)</li>
-                                <li data-i18n="effects.liver5">Liver cancer</li>
-                            </ul>
-                            
-                            <h4 data-i18n="effects.heartTitle">Heart and Circulatory System</h4>
-                            <ul>
-                                <li data-i18n="effects.heart1">High blood pressure</li>
-                                <li data-i18n="effects.heart2">Cardiomyopathy (stretching and drooping of heart muscle)</li>
-                                <li data-i18n="effects.heart3">Irregular heartbeat (arrhythmias)</li>
-                                <li data-i18n="effects.heart4">Increased risk of stroke</li>
-                                <li data-i18n="effects.heart5">Heart failure</li>
-                            </ul>
-                            
-                            <h4 data-i18n="effects.digestiveTitle">Digestive System</h4>
-                            <ul>
-                                <li data-i18n="effects.digestive1">Inflammation of the pancreas (pancreatitis)</li>
-                                <li data-i18n="effects.digestive2">Increased risk of mouth, throat, esophagus, colon and rectum cancers</li>
-                                <li data-i18n="effects.digestive3">Gastritis (stomach inflammation)</li>
-                                <li data-i18n="effects.digestive4">Ulcers</li>
-                            </ul>
-                            
-                            <h4 data-i18n="effects.immuneTitle">Immune System</h4>
-                            <ul>
-                                <li data-i18n="effects.immune1">Weakened immune system, making you more susceptible to diseases</li>
-                                <li data-i18n="effects.immune2">Slower healing from wounds</li>
-                                <li data-i18n="effects.immune3">Increased vulnerability to pneumonia and tuberculosis</li>
-                            </ul>
-                            
-                            <h4 data-i18n="effects.otherTitle">Other Effects</h4>
-                            <ul>
-                                <li data-i18n="effects.other1">Malnutrition and vitamin deficiencies</li>
-                                <li data-i18n="effects.other2">Osteoporosis (thinning bones)</li>
-                                <li data-i18n="effects.other3">Sexual dysfunction</li>
-                                <li data-i18n="effects.other4">Fertility problems</li>
-                                <li data-i18n="effects.other5">During pregnancy: risk of miscarriage, stillbirth, or fetal alcohol spectrum disorders</li>
-                            </ul>
+                            <div class="organ-effects">
+                                <h4 data-i18n="effects.organEffectsTitle">How Alcohol Affects Your Body Systems</h4>
+                                <div class="organ-grid">
+                                    <div class="organ-card">
+                                        <span class="organ-icon">🧠</span>
+                                        <div class="organ-title" data-i18n="effects.brainTitle">Brain and Nervous System</div>
+                                        <ul>
+                                            <li data-i18n="effects.brain1">Brain damage and cognitive impairment</li>
+                                            <li data-i18n="effects.brain2">Increased risk of dementia</li>
+                                            <li data-i18n="effects.brain3">Wernicke-Korsakoff syndrome (a serious neurological disorder)</li>
+                                            <li data-i18n="effects.brain4">Depression and anxiety</li>
+                                            <li data-i18n="effects.brain5">Peripheral neuropathy (nerve damage)</li>
+                                            <li data-i18n="effects.brain6">Memory problems and reduced concentration</li>
+                                            <li data-i18n="effects.brain7">Sleep disturbances</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="organ-card">
+                                        <span class="organ-icon">🫀</span>
+                                        <div class="organ-title" data-i18n="effects.heartTitle">Heart and Circulatory System</div>
+                                        <ul>
+                                            <li data-i18n="effects.heart1">High blood pressure</li>
+                                            <li data-i18n="effects.heart2">Cardiomyopathy (stretching and drooping of heart muscle)</li>
+                                            <li data-i18n="effects.heart3">Irregular heartbeat (arrhythmias)</li>
+                                            <li data-i18n="effects.heart4">Increased risk of stroke</li>
+                                            <li data-i18n="effects.heart5">Heart failure</li>
+                                            <li data-i18n="effects.heart6">Increased cholesterol and triglycerides</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="organ-card">
+                                        <span class="organ-icon">🫁</span>
+                                        <div class="organ-title" data-i18n="effects.liverTitle">Liver</div>
+                                        <ul>
+                                            <li data-i18n="effects.liver1">Fatty liver disease</li>
+                                            <li data-i18n="effects.liver2">Alcoholic hepatitis</li>
+                                            <li data-i18n="effects.liver3">Liver fibrosis</li>
+                                            <li data-i18n="effects.liver4">Cirrhosis (irreversible scarring)</li>
+                                            <li data-i18n="effects.liver5">Liver cancer</li>
+                                            <li data-i18n="effects.liver6">Liver failure</li>
+                                            <li data-i18n="effects.liver7">Jaundice (yellowing of skin/eyes)</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="organ-card">
+                                        <span class="organ-icon">🫁</span>
+                                        <div class="organ-title" data-i18n="effects.digestiveTitle">Digestive System</div>
+                                        <ul>
+                                            <li data-i18n="effects.digestive1">Inflammation of the pancreas (pancreatitis)</li>
+                                            <li data-i18n="effects.digestive2">Increased risk of mouth, throat, esophagus, colon and rectum cancers</li>
+                                            <li data-i18n="effects.digestive3">Gastritis (stomach inflammation)</li>
+                                            <li data-i18n="effects.digestive4">Ulcers</li>
+                                            <li data-i18n="effects.digestive5">Internal bleeding</li>
+                                            <li data-i18n="effects.digestive6">Malabsorption of nutrients</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="organ-card">
+                                        <span class="organ-icon">🛡️</span>
+                                        <div class="organ-title" data-i18n="effects.immuneTitle">Immune System</div>
+                                        <ul>
+                                            <li data-i18n="effects.immune1">Weakened immune system, making you more susceptible to diseases</li>
+                                            <li data-i18n="effects.immune2">Slower healing from wounds</li>
+                                            <li data-i18n="effects.immune3">Increased vulnerability to pneumonia and tuberculosis</li>
+                                            <li data-i18n="effects.immune4">Reduced ability to fight infections</li>
+                                            <li data-i18n="effects.immune5">Chronic inflammation throughout the body</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar"></div>
+                                                <div class="risk-bar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="organ-card">
+                                        <span class="organ-icon">💪</span>
+                                        <div class="organ-title" data-i18n="effects.otherBodyTitle">Other Physical Effects</div>
+                                        <ul>
+                                            <li data-i18n="effects.other1">Malnutrition and vitamin deficiencies</li>
+                                            <li data-i18n="effects.other2">Osteoporosis (thinning bones)</li>
+                                            <li data-i18n="effects.other3">Sexual dysfunction</li>
+                                            <li data-i18n="effects.other4">Fertility problems</li>
+                                            <li data-i18n="effects.other5">During pregnancy: risk of miscarriage, stillbirth, or fetal alcohol spectrum disorders</li>
+                                            <li data-i18n="effects.other6">Premature aging of skin and body tissues</li>
+                                        </ul>
+                                        <div class="risk-level">
+                                            <span>Risk Severity:</span>
+                                            <div class="risk-bars">
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar active"></div>
+                                                <div class="risk-bar"></div>
+                                                <div class="risk-bar"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <h4 data-i18n="effects.socialTitle">Social and Mental Health Effects</h4>
                             <ul>
-                                <li data-i18n="effects.social1">Relationship problems</li>
-                                <li data-i18n="effects.social2">Work or school problems</li>
+                                <li data-i18n="effects.social1">Relationship problems with family, friends, and partners</li>
+                                <li data-i18n="effects.social2">Work or school performance issues</li>
                                 <li data-i18n="effects.social3">Increased risk of unemployment</li>
-                                <li data-i18n="effects.social4">Financial difficulties</li>
-                                <li data-i18n="effects.social5">Higher risk of violence and accidents</li>
-                                <li data-i18n="effects.social6">Legal problems</li>
+                                <li data-i18n="effects.social4">Financial difficulties due to money spent on alcohol and reduced productivity</li>
+                                <li data-i18n="effects.social5">Higher risk of violence, accidents, and risky behaviors</li>
+                                <li data-i18n="effects.social6">Legal problems including DUI/DWI charges</li>
+                                <li data-i18n="effects.social7">Social isolation as drinking becomes more important than relationships</li>
+                                <li data-i18n="effects.social8">Increased risk of suicide and self-harm</li>
                             </ul>
+                            
+                            <h4 data-i18n="effects.toleranceTitle">Tolerance, Dependence, and Withdrawal</h4>
+                            <p data-i18n="effects.toleranceText">With regular alcohol consumption, your body develops tolerance, meaning you need more alcohol to achieve the same effects. This can lead to dependency, where your body physically requires alcohol to function normally. If a person with alcohol dependency stops drinking suddenly, they may experience withdrawal symptoms including:</p>
+                            <ul>
+                                <li data-i18n="effects.withdrawal1">Anxiety and restlessness</li>
+                                <li data-i18n="effects.withdrawal2">Tremors (shaking)</li>
+                                <li data-i18n="effects.withdrawal3">Sweating and increased heart rate</li>
+                                <li data-i18n="effects.withdrawal4">Nausea and vomiting</li>
+                                <li data-i18n="effects.withdrawal5">Insomnia</li>
+                                <li data-i18n="effects.withdrawal6">Hallucinations</li>
+                                <li data-i18n="effects.withdrawal7">Seizures</li>
+                                <li data-i18n="effects.withdrawal8">Delirium tremens (DTs) - a severe and potentially life-threatening condition</li>
+                            </ul>
+                            <p data-i18n="effects.withdrawalWarning">Note: Alcohol withdrawal can be life-threatening and should be medically supervised in people with significant alcohol dependency.</p>
+                            
+                            <div class="statistics-box">
+                                <h4 data-i18n="effects.statisticsTitle">Alcohol-Related Health Statistics</h4>
+                                <ul>
+                                    <li data-i18n="effects.statistic1">Alcohol is a causal factor in more than 200 disease and injury conditions.</li>
+                                    <li data-i18n="effects.statistic2">Worldwide, 3 million deaths every year result from harmful use of alcohol, representing 5.3% of all deaths.</li>
+                                    <li data-i18n="effects.statistic3">The harmful use of alcohol is a causal factor in more than 200 disease and injury conditions.</li>
+                                    <li data-i18n="effects.statistic4">People who begin drinking before age 15 are six times more likely to develop alcohol dependence than those who start at age 21 or older.</li>
+                                    <li data-i18n="effects.statistic5">Long-term heavy drinking increases the risk of developing certain cancers by 2-5 times.</li>
+                                </ul>
+                                <p data-i18n="effects.statisticSource">Source: World Health Organization, 2018</p>
+                            </div>
                         </div>
                         
                         <div id="responsible-drinking" class="tab-content">
                             <h3 data-i18n="effects.responsibleTitle">Responsible Drinking Guidelines</h3>
                             <p data-i18n="effects.responsibleIntro">If you choose to drink alcohol, doing so responsibly can help minimize risks to your health and safety. Here are some guidelines for responsible drinking:</p>
                             
-                            <h4 data-i18n="effects.limitsTitle">Know Your Limits</h4>
-                            <ul>
-                                <li data-i18n="effects.limits1">Many health organizations recommend no more than 1-2 standard drinks per day</li>
-                                <li data-i18n="effects.limits2">Consider having alcohol-free days each week</li>
-                                <li data-i18n="effects.limits3">Be aware that alcohol content varies by beverage type and serving size</li>
-                                <li data-i18n="effects.limits4">Remember that individual tolerance varies based on body size, gender, metabolism, and other factors</li>
-                            </ul>
+                            <div class="standard-drinks">
+                                <div class="drink-card">
+                                    <div class="drink-header" data-i18n="effects.standardDrinkTitle">What is a Standard Drink?</div>
+                                    <div class="drink-content">
+                                        <p data-i18n="effects.standardDrinkText">A standard drink contains approximately 14 grams of pure alcohol in the US, but this varies by country:</p>
+                                        <ul>
+                                            <li data-i18n="effects.standardUS">United States: 14g alcohol</li>
+                                            <li data-i18n="effects.standardUK">United Kingdom: 8g alcohol</li>
+                                            <li data-i18n="effects.standardEU">Most European countries: 10g alcohol</li>
+                                            <li data-i18n="effects.standardAU">Australia: 10g alcohol</li>
+                                            <li data-i18n="effects.standardJP">Japan: 19.75g alcohol</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="drink-card">
+                                    <div class="drink-header" data-i18n="effects.commonDrinksTitle">Common Drink Equivalents</div>
+                                    <div class="drink-content">
+                                        <p data-i18n="effects.drinkEquivUS">In the US, one standard drink equals:</p>
+                                        <ul>
+                                            <li data-i18n="effects.beer12oz">12 oz (355ml) of regular beer (5% alcohol)</li>
+                                            <li data-i18n="effects.wine5oz">5 oz (150ml) of wine (12% alcohol)</li>
+                                            <li data-i18n="effects.spirits1.5oz">1.5 oz (45ml) of spirits (40% alcohol)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="drink-card">
+                                    <div class="drink-header" data-i18n="effects.lowRiskTitle">Low-Risk Drinking Guidelines</div>
+                                    <div class="drink-content">
+                                        <p data-i18n="effects.usGuidelinesTitle">United States (CDC):</p>
+                                        <ul>
+                                            <li data-i18n="effects.usMen">Men: Up to 2 drinks per day</li>
+                                            <li data-i18n="effects.usWomen">Women: Up to 1 drink per day</li>
+                                        </ul>
+                                        <p data-i18n="effects.ukGuidelinesTitle">United Kingdom:</p>
+                                        <ul>
+                                            <li data-i18n="effects.ukBoth">Both men and women: No more than 14 units per week, spread over 3 or more days</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="guidelines-section">
+                                <h4 data-i18n="effects.limitsTitle">Know Your Limits</h4>
+                                <div class="guideline-columns">
+                                    <div class="guideline-card">
+                                        <div class="guideline-header">
+                                            <div class="guideline-icon">📅</div>
+                                            <h5 data-i18n="effects.weeklyLimitsTitle">Weekly Limits</h5>
+                                        </div>
+                                        <ul>
+                                            <li data-i18n="effects.limits1">Many health organizations recommend no more than 1-2 standard drinks per day</li>
+                                            <li data-i18n="effects.limits2">Consider having alcohol-free days each week</li>
+                                            <li data-i18n="effects.limits3">Never "save up" drinks for a single session</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="guideline-card">
+                                        <div class="guideline-header">
+                                            <div class="guideline-icon">⚖️</div>
+                                            <h5 data-i18n="effects.individualTitle">Individual Factors</h5>
+                                        </div>
+                                        <ul>
+                                            <li data-i18n="effects.limits4">Remember that individual tolerance varies based on body size, gender, metabolism, and other factors</li>
+                                            <li data-i18n="effects.limits5">Your personal limit may be lower than guidelines suggest</li>
+                                            <li data-i18n="effects.limits6">Alcohol affects women more strongly than men of the same weight</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="guideline-card">
+                                        <div class="guideline-header">
+                                            <div class="guideline-icon">🍷</div>
+                                            <h5 data-i18n="effects.contentTitle">Alcohol Content</h5>
+                                        </div>
+                                        <ul>
+                                            <li data-i18n="effects.content1">Be aware that alcohol content varies by beverage type and serving size</li>
+                                            <li data-i18n="effects.content2">A craft beer may have 2-3 times the alcohol of a light beer</li>
+                                            <li data-i18n="effects.content3">Mixed drinks can contain multiple standard drinks in one glass</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <h4 data-i18n="effects.drinkingTipsTitle">Safe Drinking Tips</h4>
                             <ul>
-                                <li data-i18n="effects.drinkingTips1">Eat before and while drinking alcohol</li>
-                                <li data-i18n="effects.drinkingTips2">Drink water between alcoholic beverages to stay hydrated</li>
+                                <li data-i18n="effects.drinkingTips1">Eat before and while drinking alcohol - food slows alcohol absorption</li>
+                                <li data-i18n="effects.drinkingTips2">Drink water between alcoholic beverages to stay hydrated and slow consumption</li>
                                 <li data-i18n="effects.drinkingTips3">Sip your drink slowly rather than gulping or taking shots</li>
                                 <li data-i18n="effects.drinkingTips4">Count your drinks and set a limit in advance</li>
                                 <li data-i18n="effects.drinkingTips5">Avoid drinking games and "keeping up" with others</li>
                                 <li data-i18n="effects.drinkingTips6">Be aware of drink tampering and never leave your drink unattended</li>
+                                <li data-i18n="effects.drinkingTips7">Choose drinks with lower alcohol content</li>
+                                <li data-i18n="effects.drinkingTips8">Consider alcohol-free alternatives for some social occasions</li>
                             </ul>
+                            
+                            <div class="medication-interactions">
+                                <h4 data-i18n="effects.medicationTitle">Alcohol and Medication Interactions</h4>
+                                <p data-i18n="effects.medicationWarning">Alcohol can interact dangerously with many medications, both prescription and over-the-counter. Always check with your healthcare provider or pharmacist about potential interactions.</p>
+                                
+                                <div class="med-interaction-list">
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Painkillers</div>
+                                        <p>Acetaminophen + alcohol = increased risk of liver damage</p>
+                                        <p>NSAIDs + alcohol = increased risk of stomach bleeding</p>
+                                    </div>
+                                    
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Antibiotics</div>
+                                        <p>Some antibiotics + alcohol = reduced effectiveness, increased side effects</p>
+                                    </div>
+                                    
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Sleep Medications</div>
+                                        <p>Sleeping pills + alcohol = dangerous respiratory depression</p>
+                                    </div>
+                                    
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Antidepressants</div>
+                                        <p>Many antidepressants + alcohol = increased impairment, reduced effectiveness</p>
+                                    </div>
+                                    
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Diabetes Medications</div>
+                                        <p>Anti-diabetic drugs + alcohol = risk of dangerously low blood sugar</p>
+                                    </div>
+                                    
+                                    <div class="interaction-item">
+                                        <div class="interaction-title">Allergy/Cold Medicine</div>
+                                        <p>Antihistamines + alcohol = increased drowsiness and impairment</p>
+                                    </div>
+                                </div>
+                            </div>
                             
                             <h4 data-i18n="effects.dontDrinkTitle">When Not to Drink</h4>
                             <ul>
@@ -434,6 +1259,8 @@
                                 <li data-i18n="effects.dontDrink5">When you have certain medical conditions</li>
                                 <li data-i18n="effects.dontDrink6">If you have a personal or family history of alcohol use disorder</li>
                                 <li data-i18n="effects.dontDrink7">When you're feeling depressed or using alcohol to cope with problems</li>
+                                <li data-i18n="effects.dontDrink8">When you need to make important decisions</li>
+                                <li data-i18n="effects.dontDrink9">Before or during physical activities where coordination is important</li>
                             </ul>
                             
                             <h4 data-i18n="effects.planningTitle">Planning Ahead</h4>
@@ -443,7 +1270,190 @@
                                 <li data-i18n="effects.planning3">Let someone know your plans</li>
                                 <li data-i18n="effects.planning4">Stay with trusted friends</li>
                                 <li data-i18n="effects.planning5">Have a backup plan if things don't go as expected</li>
+                                <li data-i18n="effects.planning6">Pre-plan your drink limit and stick to it</li>
+                                <li data-i18n="effects.planning7">Have non-alcoholic alternatives available</li>
                             </ul>
+                        </div>
+                        
+                        <div id="alcohol-metabolism" class="tab-content">
+                            <h3 data-i18n="effects.metabolismTitle">How Your Body Processes Alcohol</h3>
+                            <p data-i18n="effects.metabolismIntro">Understanding how your body processes alcohol can help you make better decisions about drinking. Here's what happens after you take a drink:</p>
+                            
+                            <div class="alcohol-metabolism">
+                                <div class="metabolism-steps">
+                                    <div class="metabolism-step">1</div>
+                                    <div class="step-content" data-i18n="effects.step1">Absorption: Alcohol enters your bloodstream through the walls of your stomach and small intestine</div>
+                                    
+                                    <div class="metabolism-step">2</div>
+                                    <div class="step-content" data-i18n="effects.step2">Distribution: Blood carries alcohol throughout your body, affecting various organs, especially your brain</div>
+                                    
+                                    <div class="metabolism-step">3</div>
+                                    <div class="step-content" data-i18n="effects.step3">Metabolism: Your liver breaks down alcohol at a rate of about one standard drink per hour</div>
+                                    
+                                    <div class="metabolism-step">4</div>
+                                    <div class="step-content" data-i18n="effects.step4">Elimination: A small amount (about 10%) of alcohol is expelled through breath, sweat, and urine</div>
+                                </div>
+                                
+                                <h4 data-i18n="effects.factorsTitle">Factors Affecting Alcohol Metabolism</h4>
+                                <ul>
+                                    <li data-i18n="effects.factor1Text"><strong>Genetics:</strong> Variations in genes can affect how efficiently your body processes alcohol</li>
+                                    <li data-i18n="effects.factor2Text"><strong>Gender:</strong> Women generally process alcohol slower than men due to less body water and different enzyme levels</li>
+                                    <li data-i18n="effects.factor3Text"><strong>Body Size:</strong> Larger people have more blood and water to dilute alcohol</li>
+                                    <li data-i18n="effects.factor4Text"><strong>Food:</strong> Eating before or while drinking slows alcohol absorption</li>
+                                    <li data-i18n="effects.factor5Text"><strong>Age:</strong> Older adults generally process alcohol more slowly</li>
+                                    <li data-i18n="effects.factor6Text"><strong>Liver Health:</strong> Liver disease reduces alcohol processing efficiency</li>
+                                    <li data-i18n="effects.factor7Text"><strong>Medications:</strong> Some medications compete with alcohol for processing in the liver</li>
+                                </ul>
+                            </div>
+                            
+                            <h4 data-i18n="effects.alcoholEliminationTitle">How Long Does Alcohol Stay in Your System?</h4>
+                            <p data-i18n="effects.eliminationRate">For most people, alcohol is eliminated at a rate of approximately 0.015% BAC per hour. This means:</p>
+                            <ul>
+                                <li data-i18n="effects.elimination1">A BAC of 0.08% would take about 5.5 hours to return to zero</li>
+                                <li data-i18n="effects.elimination2">A night of heavy drinking (0.15% BAC) could take 10+ hours to fully clear</li>
+                                <li data-i18n="effects.elimination3">You may still have measurable alcohol in your system the morning after drinking</li>
+                            </ul>
+                            
+                            <h4 data-i18n="effects.metabolismMythsTitle">Common Myths About Alcohol Metabolism</h4>
+                            <div class="guideline-columns">
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">❌</div>
+                                        <h5 data-i18n="effects.mythCoffee">Coffee doesn't sober you up</h5>
+                                    </div>
+                                    <p data-i18n="effects.mythCoffeeText">Caffeine may make you feel more alert, but it doesn't speed up alcohol metabolism or lower your BAC.</p>
+                                </div>
+                                
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">❌</div>
+                                        <h5 data-i18n="effects.mythColdShower">Cold showers don't help</h5>
+                                    </div>
+                                    <p data-i18n="effects.mythColdShowerText">Cold showers might wake you up but don't affect how quickly your body processes alcohol.</p>
+                                </div>
+                                
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">❌</div>
+                                        <h5 data-i18n="effects.mythExercise">You can't "sweat it out"</h5>
+                                    </div>
+                                    <p data-i18n="effects.mythExerciseText">Exercise doesn't significantly speed up alcohol elimination and might even be dangerous when intoxicated.</p>
+                                </div>
+                            </div>
+                            
+                            <h4 data-i18n="effects.alcoholTestingTitle">Alcohol Testing Windows</h4>
+                            <p data-i18n="effects.testingText">Different alcohol tests can detect alcohol for varying lengths of time:</p>
+                            <ul>
+                                <li data-i18n="effects.testing1">Breath tests: Up to 24 hours</li>
+                                <li data-i18n="effects.testing2">Blood tests: Up to 12 hours</li>
+                                <li data-i18n="effects.testing3">Urine tests: Up to 3-5 days (EtG test)</li>
+                                <li data-i18n="effects.testing4">Hair tests: Up to 90 days</li>
+                            </ul>
+                        </div>
+                        
+                        <div id="getting-help" class="tab-content">
+                            <h3 data-i18n="effects.helpSectionTitle">Getting Help for Alcohol-Related Issues</h3>
+                            <p data-i18n="effects.helpIntro">If you're concerned about your drinking habits or those of someone you care about, help is available. Recognizing when alcohol use has become a problem is the first step toward recovery.</p>
+                            
+                            <h4 data-i18n="effects.warningSignsTitle">Warning Signs of Alcohol Use Disorder</h4>
+                            <ul>
+                                <li data-i18n="effects.warningSign1">Drinking more or for longer than intended</li>
+                                <li data-i18n="effects.warningSign2">Trying to cut down or stop but being unable to</li>
+                                <li data-i18n="effects.warningSign3">Spending a lot of time drinking or recovering from drinking</li>
+                                <li data-i18n="effects.warningSign4">Experiencing strong cravings for alcohol</li>
+                                <li data-i18n="effects.warningSign5">Continuing to drink despite it causing problems with family, friends, or work</li>
+                                <li data-i18n="effects.warningSign6">Giving up activities you used to enjoy in order to drink</li>
+                                <li data-i18n="effects.warningSign7">Finding yourself in dangerous situations while drinking (driving, unsafe sex, etc.)</li>
+                                <li data-i18n="effects.warningSign8">Developing a tolerance (needing more alcohol to get the same effect)</li>
+                                <li data-i18n="effects.warningSign9">Experiencing withdrawal symptoms when effects wear off</li>
+                            </ul>
+                            
+                            <div class="helpline-section">
+                                <h4 data-i18n="effects.helplineTitle">Alcohol Helplines by Country</h4>
+                                <p data-i18n="effects.helpline24_7">These helplines offer confidential support 24/7:</p>
+                                
+                                <div class="helplines">
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">United States</div>
+                                        <p>SAMHSA's National Helpline</p>
+                                        <p class="helpline-phone">1-800-662-HELP (4357)</p>
+                                    </div>
+                                    
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">United Kingdom</div>
+                                        <p>Drinkline</p>
+                                        <p class="helpline-phone">0300 123 1110</p>
+                                    </div>
+                                    
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">Canada</div>
+                                        <p>Drug & Alcohol Helpline</p>
+                                        <p class="helpline-phone">1-800-565-8603</p>
+                                    </div>
+                                    
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">Australia</div>
+                                        <p>National Alcohol and Other Drug Hotline</p>
+                                        <p class="helpline-phone">1800 250 015</p>
+                                    </div>
+                                    
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">Ireland</div>
+                                        <p>HSE Drug and Alcohol Helpline</p>
+                                        <p class="helpline-phone">1800 459 459</p>
+                                    </div>
+                                    
+                                    <div class="helpline-card">
+                                        <div class="helpline-country">Norway</div>
+                                        <p>RUStelefonen</p>
+                                        <p class="helpline-phone">08588</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4 data-i18n="effects.treatmentTitle">Treatment Options</h4>
+                            <p data-i18n="effects.treatmentIntro">Many effective treatment options are available, and the best approach depends on individual circumstances:</p>
+                            
+                            <div class="guideline-columns">
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">👥</div>
+                                        <h5 data-i18n="effects.supportGroupsTitle">Support Groups</h5>
+                                    </div>
+                                    <ul>
+                                        <li data-i18n="effects.supportAA">Alcoholics Anonymous (AA)</li>
+                                        <li data-i18n="effects.supportSMART">SMART Recovery</li>
+                                        <li data-i18n="effects.supportRefuge">Refuge Recovery</li>
+                                        <li data-i18n="effects.supportLifeRing">LifeRing Secular Recovery</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">🩺</div>
+                                        <h5 data-i18n="effects.medicalTitle">Medical Treatment</h5>
+                                    </div>
+                                    <ul>
+                                        <li data-i18n="effects.medicalDetox">Medically supervised detox</li>
+                                        <li data-i18n="effects.medicalInpatient">Inpatient rehabilitation</li>
+                                        <li data-i18n="effects.medicalOutpatient">Outpatient programs</li>
+                                        <li data-i18n="effects.medicalMeds">Medications (disulfiram, naltrexone, acamprosate)</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="guideline-card">
+                                    <div class="guideline-header">
+                                        <div class="guideline-icon">🧠</div>
+                                        <h5 data-i18n="effects.therapyTitle">Therapy Options</h5>
+                                    </div>
+                                    <ul>
+                                        <li data-i18n="effects.therapyCBT">Cognitive-behavioral therapy (CBT)</li>
+                                        <li data-i18n="effects.therapyMotivational">Motivational enhancement therapy</li>
+                                        <li data-i18n="effects.therapyFamily">Family therapy</li>
+                                        <li data-i18n="effects.therapyGroup">Group therapy</li>
+                                    </ul>
+                                </div>
+                            </div>
                             
                             <div class="alert-box">
                                 <h4 data-i18n="effects.helpTitle">Getting Help</h4>
@@ -466,6 +1476,9 @@
                             <li>World Health Organization. (2018). Global status report on alcohol and health. <a href="https://www.who.int/publications/i/item/9789241565639" target="_blank">https://www.who.int/</a></li>
                             <li>Centers for Disease Control and Prevention. (2022). Alcohol Use and Your Health. <a href="https://www.cdc.gov/alcohol/fact-sheets/alcohol-use.htm" target="_blank">https://www.cdc.gov/</a></li>
                             <li>American Addiction Centers. (2022). Blood Alcohol Content and You. <a href="https://www.alcohol.org/bac-calculator/" target="_blank">https://www.alcohol.org/</a></li>
+                            <li>Substance Abuse and Mental Health Services Administration. (2021). Treatment for Substance Use Disorders. <a href="https://www.samhsa.gov/treatment/substance-use-disorders" target="_blank">https://www.samhsa.gov/</a></li>
+                            <li>Harvard Health Publishing. (2021). Alcohol Metabolism: Effects on the Body. <a href="https://www.health.harvard.edu/" target="_blank">https://www.health.harvard.edu/</a></li>
+                            <li>British Liver Trust. (2020). Alcohol and Liver Disease. <a href="https://britishlivertrust.org.uk/" target="_blank">https://britishlivertrust.org.uk/</a></li>
                         </ol>
                     </div>
                     

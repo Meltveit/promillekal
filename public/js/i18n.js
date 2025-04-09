@@ -26,7 +26,8 @@ function initializeI18n() {
             },
             interpolation: {
                 escapeValue: false
-            }
+            },
+            debug: true // Turn on debugging to see errors in console
         });
 }
 
@@ -65,11 +66,15 @@ function changeLanguage(lang) {
 
 // Apply translations to the page
 function applyTranslations() {
+    console.log('Applying translations with language:', i18next.language);
+    
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         const translation = i18next.t(key);
         
-        if (translation) {
+        console.log(`Translating key: ${key} -> ${translation}`);
+        
+        if (translation && translation !== key) {
             if (element.tagName === 'INPUT' && element.type === 'button') {
                 element.value = translation;
             } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
@@ -77,14 +82,16 @@ function applyTranslations() {
             } else {
                 element.textContent = translation;
             }
+        } else {
+            console.warn('Missing translation for key:', key);
         }
     });
     
     // Update page title and meta description
-    document.title = i18next.t('meta.title');
+    document.title = i18next.t('meta.title', 'Bacometer');
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-        metaDescription.setAttribute('content', i18next.t('meta.description'));
+        metaDescription.setAttribute('content', i18next.t('meta.description', ''));
     }
     
     // Update language selector
@@ -129,6 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize i18next
     initializeI18n().then(() => {
+        console.log('i18next initialized with language:', i18next.language);
+        
         // Apply translations
         applyTranslations();
         
@@ -139,7 +148,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 changeLanguage(e.target.value);
             });
         }
+    }).catch(error => {
+        console.error('Error initializing i18next:', error);
     });
+});
+
+// Handle language changes
+i18next.on('languageChanged', () => {
+    console.log('Language changed to:', i18next.language);
+    applyTranslations();
 });
 
 // Export for use in other files
