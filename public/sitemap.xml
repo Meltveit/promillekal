@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+       xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://bacometer.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bacometer.com/"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://bacometer.com/no"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://bacometer.com/es"/>
+    <xhtml:link rel="alternate" hreflang="da" href="https://bacometer.com/dk"/>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://bacometer.com/se"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://bacometer.com/fi"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://bacometer.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://bacometer.com/de"/>
+  </url>
+  <url>
+    <loc>https://bacometer.com/cannabis.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bacometer.com/cannabis.html"/>
+    <xhtml:link rel="alternate" hreflang="no" href="https://bacometer.com/no/cannabis.html"/>
+    <!-- Gjenta for andre språk -->
+  </url>
+  <!-- Gjenta for de andre sidene -->
+</urlset>

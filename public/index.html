@@ -1,89 +1,943 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
-
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/11.6.0/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/11.6.0/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/11.6.0/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
-
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bacometer - Calculate Your Blood Alcohol Content (BAC)</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Calculate your blood alcohol content (BAC) accurately based on your gender, weight, drinks consumed, and time. Free and easy to use BAC calculator.">
+    <meta name="keywords" content="BAC calculator, blood alcohol content, alcohol calculator, promille kalkulator, bacometer">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Bacometer - Calculate Your Blood Alcohol Content">
+    <meta property="og:description" content="Accurate BAC calculator based on gender, weight, and consumption.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bacometer.com">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bacometer.com">
+    
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://bacometer.com">
+    <link rel="alternate" hreflang="no" href="https://bacometer.com/no">
+    <link rel="alternate" hreflang="es" href="https://bacometer.com/es">
+    <link rel="alternate" hreflang="da" href="https://bacometer.com/dk">
+    <link rel="alternate" hreflang="sv" href="https://bacometer.com/se">
+    <link rel="alternate" hreflang="fi" href="https://bacometer.com/fi">
+    <link rel="alternate" hreflang="nl" href="https://bacometer.com/nl">
+    <link rel="alternate" hreflang="de" href="https://bacometer.com/de">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    
+    <!-- CSS -->
+    <style>
+        /* Variables */
+        :root {
+            --primary-color: #4a6eb5;
+            --primary-dark: #3a5794;
+            --secondary-color: #6cc3d5;
+            --accent-color: #ff6b6b;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #333333;
+            --grey-color: #6c757d;
+            --light-grey: #e9ecef;
+            --border-color: #dee2e6;
+            
+            --safe-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2.5rem;
         }
-      });
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 2.5rem; }
+        h2 { font-size: 2rem; }
+        h3 { font-size: 1.75rem; }
+        h4 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: var(--spacing-md) 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: var(--spacing-lg);
+        }
+
+        nav ul li a {
+            color: white;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .language-selector select {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            background-color: white;
+            color: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        .calculator-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .calculator-container h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .drinks-container {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .drinks-container h4 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .drink-item {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+            background-color: var(--light-grey);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Buttons */
+        .btn-primary,
+        .btn-secondary {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--light-grey);
+            color: var(--text-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Results Container */
+        .results-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg);
+        }
+
+        .results-container h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .bac-display {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .bac-value {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .bac-status {
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .bac-status.safe {
+            background-color: var(--safe-color);
+            color: white;
+        }
+
+        .bac-status.warning {
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+        }
+
+        .bac-status.danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .results-details {
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .chart-container {
+            height: 300px;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .disclaimer {
+            font-size: 0.875rem;
+            color: var(--grey-color);
+            padding: var(--spacing-md);
+            background-color: var(--light-grey);
+            border-radius: 4px;
+        }
+
+        /* Info Section */
+        .info-section {
+            padding: var(--spacing-xl) 0;
+            background-color: var(--light-grey);
+        }
+
+        .info-box {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg);
+        }
+
+        .info-box h3 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .bac-levels {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .bac-level {
+            display: flex;
+            align-items: center;
+            padding: var(--spacing-md);
+            background-color: var(--light-grey);
+            border-radius: 4px;
+        }
+
+        .level-range {
+            flex: 0 0 120px;
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .level-description h4 {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .level-description p {
+            margin: 0;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            margin: var(--spacing-xl) 0;
+            text-align: center;
+            min-height: 90px;
+            background-color: var(--light-grey);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .footer-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-section a {
+            color: white;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .language-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: var(--spacing-lg);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .copyright a {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .copyright a:hover {
+            color: white;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: var(--spacing-md);
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 var(--spacing-md);
+            }
+            
+            .language-selector {
+                margin-top: var(--spacing-md);
+            }
+            
+            .drink-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .bac-level {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .level-range {
+                margin-bottom: var(--spacing-xs);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-xl);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            html {
+                font-size: 14px;
+            }
+            
+            .bac-value {
+                font-size: 3rem;
+            }
+            
+            .bac-status {
+                font-size: 1.25rem;
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+        }
+    </style>
+    
+    <!-- i18next Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/i18next@21.6.16/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend@1.4.1/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector@6.1.4/i18nextBrowserLanguageDetector.min.js"></script>
+    
+    <!-- Google AdSense (Replace with your actual AdSense code) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1 data-i18n="nav.bac">BAC Calculator</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/" class="active" data-i18n="nav.bac">BAC Calculator</a></li>
+                    <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                    <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                    <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="no">Norsk</option>
+                    <option value="es">Español</option>
+                    <option value="dk">Dansk</option>
+                    <option value="se">Svenska</option>
+                    <option value="fi">Suomi</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 data-i18n="hero.title">Calculate Your Blood Alcohol Content (BAC)</h2>
+                <p data-i18n="hero.subtitle">Find out how much alcohol is in your system and when it's safe to drive.</p>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Top -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <!-- Replace with your actual AdSense code -->
+            <!--
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+        </div>
+        
+        <section class="calculator-section">
+            <div class="container">
+                <div class="calculator-container">
+                    <h3 data-i18n="calculator.title">Blood Alcohol Content Calculator</h3>
+                    <form id="bac-calculator">
+                        <div class="form-group">
+                            <label for="gender" data-i18n="calculator.gender">Gender:</label>
+                            <select id="gender" required>
+                                <option value="" data-i18n="calculator.selectGender">Select</option>
+                                <option value="male" data-i18n="calculator.male">Male</option>
+                                <option value="female" data-i18n="calculator.female">Female</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="age" data-i18n="calculator.age">Age:</label>
+                            <input type="number" id="age" min="18" max="120" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="weight" data-i18n="calculator.weight">Weight (kg):</label>
+                            <input type="number" id="weight" min="30" max="250" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="height" data-i18n="calculator.height">Height (cm):</label>
+                            <input type="number" id="height" min="120" max="250">
+                        </div>
+                        
+                        <div class="drinks-container">
+                            <h4 data-i18n="calculator.drinks">Drinks Consumed</h4>
+                            <div id="drinks-list">
+                                <div class="drink-item">
+                                    <div class="form-group">
+                                        <label for="drink-type-1" data-i18n="calculator.drinkType">Type:</label>
+                                        <select id="drink-type-1" class="drink-type" required>
+                                            <option value="" data-i18n="calculator.selectType">Select</option>
+                                            <option value="beer" data-i18n="calculator.beer">Beer (5%)</option>
+                                            <option value="wine" data-i18n="calculator.wine">Wine (12%)</option>
+                                            <option value="spirits" data-i18n="calculator.spirits">Spirits (40%)</option>
+                                            <option value="custom" data-i18n="calculator.custom">Custom</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group custom-alcohol-content" style="display: none;">
+                                        <label for="custom-percent-1" data-i18n="calculator.alcoholPercent">Alcohol %:</label>
+                                        <input type="number" id="custom-percent-1" min="0" max="100" step="0.1">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="drink-size-1" data-i18n="calculator.size">Size (ml):</label>
+                                        <input type="number" id="drink-size-1" class="drink-size" min="0" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="drink-time-1" data-i18n="calculator.time">Time consumed:</label>
+                                        <input type="time" id="drink-time-1" class="drink-time" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="button" id="add-drink" class="btn-secondary" data-i18n="calculator.addDrink">Add Another Drink</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="current-time" data-i18n="calculator.currentTime">Current Time:</label>
+                            <input type="time" id="current-time" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="metabolism" data-i18n="calculator.metabolism">Metabolism:</label>
+                            <select id="metabolism">
+                                <option value="normal" data-i18n="calculator.normalMetabolism">Normal</option>
+                                <option value="slow" data-i18n="calculator.slowMetabolism">Slow</option>
+                                <option value="fast" data-i18n="calculator.fastMetabolism">Fast</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" data-i18n="calculator.calculate">Calculate BAC</button>
+                    </form>
+                </div>
+                
+                <div id="results" class="results-container" style="display: none;">
+                    <h3 data-i18n="results.title">Your Results</h3>
+                    <div class="bac-display">
+                        <div class="bac-value">
+                            <span id="bac-result">0.00</span>‰
+                        </div>
+                        <div class="bac-status" id="bac-status">
+                            Safe to drive
+                        </div>
+                    </div>
+                    
+                    <div class="results-details">
+                        <p><span data-i18n="results.based">Based on your inputs, your current Blood Alcohol Content (BAC) is</span> <span id="bac-text">0.00</span>‰.</p>
+                        <p id="legal-limit-info" data-i18n="results.legalLimit">The legal driving limit in most countries is 0.5‰ (0.05%).</p>
+                        <p id="sober-time"><span data-i18n="results.soberTime">You will be sober in approximately</span> <span id="hours-to-sober">0</span> <span data-i18n="results.hours">hours and</span> <span id="minutes-to-sober">0</span> <span data-i18n="results.minutes">minutes</span>.</p>
+                        <p id="safe-to-drive-time"><span data-i18n="results.safeToDrive">It would be safe to drive at approximately</span> <span id="safe-time">00:00</span>.</p>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="bac-chart"></canvas>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        <p data-i18n="results.disclaimer">Disclaimer: This calculator provides an estimate only and should not be used as a definitive measure of your blood alcohol content. Many factors can affect your BAC including medications, health conditions, and individual metabolism variations. Always err on the side of caution and never drive if you've been drinking.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Middle -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <!-- Replace with your actual AdSense code -->
+            <!--
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+        </div>
+        
+        <section class="info-section">
+            <div class="container">
+                <div class="info-box">
+                    <h3 data-i18n="info.title">Understanding BAC Levels</h3>
+                    <div class="bac-levels">
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level1.range">0.00‰ - 0.20‰</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level1.title">Sober to Mild Effects</h4>
+                                <p data-i18n="info.level1.description">Little to no effect for most people. Slight mood elevation and relaxation may be felt.</p>
+                            </div>
+                        </div>
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level2.range">0.20‰ - 0.50‰</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level2.title">Mild Impairment</h4>
+                                <p data-i18n="info.level2.description">Relaxation, slight body warmth, mild mood enhancement. Slight decline in visual functions and ability to multitask.</p>
+                            </div>
+                        </div>
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level3.range">0.50‰ - 0.80‰</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level3.title">Significant Impairment</h4>
+                                <p data-i18n="info.level3.description">Reduced coordination, decreased ability to track moving objects. Reduced ability to detect danger. Judgment and self-control are reduced.</p>
+                            </div>
+                        </div>
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level4.range">0.80‰ - 1.50‰</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level4.title">Severe Impairment</h4>
+                                <p data-i18n="info.level4.description">Poor muscle coordination, difficulty with balance. Slurred speech, poor judgment, impaired memory and comprehension.</p>
+                            </div>
+                        </div>
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level5.range">1.50‰ - 3.00‰</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level5.title">Very Dangerous</h4>
+                                <p data-i18n="info.level5.description">Major loss of balance. Significantly impaired vision, awareness, and judgment. Nausea, possible vomiting. Risk of losing consciousness.</p>
+                            </div>
+                        </div>
+                        <div class="bac-level">
+                            <div class="level-range" data-i18n="info.level6.range">3.00‰+</div>
+                            <div class="level-description">
+                                <h4 data-i18n="info.level6.title">Life-Threatening</h4>
+                                <p data-i18n="info.level6.description">Severe risk of alcohol poisoning. Unconsciousness. Risk of death due to respiratory depression. Emergency medical attention required.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- AdSense Ad - Bottom -->
+        <div class="ad-container">
+            <p data-i18n="ads.advertisement">Advertisement</p>
+            <!-- Replace with your actual AdSense code -->
+            <!--
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            -->
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bacometer</h3>
+                    <p data-i18n="footer.description">A free tool to estimate blood alcohol content and help promote responsible drinking decisions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+                    <ul>
+                        <li><a href="/" data-i18n="nav.bac">BAC Calculator</a></li>
+                        <li><a href="/cannabis.html" data-i18n="nav.cannabis">Cannabis Calculator</a></li>
+                        <li><a href="/alcohol-effects.html" data-i18n="nav.alcoholEffects">Alcohol Effects</a></li>
+                        <li><a href="/about.html" data-i18n="nav.about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 data-i18n="footer.languages">Languages</h3>
+                    <ul class="language-list">
+                        <li><a href="/">English</a></li>
+                        <li><a href="/no">Norsk</a></li>
+                        <li><a href="/es">Español</a></li>
+                        <li><a href="/dk">Dansk</a></li>
+                        <li><a href="/se">Svenska</a></li>
+                        <li><a href="/fi">Suomi</a></li>
+                        <li><a href="/nl">Nederlands</a></li>
+                        <li><a href="/de">Deutsch</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year">2025</span> Bacometer.com. <span data-i18n="footer.copyright">All Rights Reserved.</span></p>
+                <p><a href="/privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> | <a href="/terms-of-service.html" data-i18n="footer.terms">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- i18next Initialization -->
+    <script>
+        // Available languages
+        const AVAILABLE_LANGUAGES = ['en', 'no', 'es', 'dk', 'se', 'fi', 'nl', 'de'];
+        
+        // Default language
+        const DEFAULT_LANGUAGE = 'en';
+        
+        // Constants for BAC calculation
+        const LEGAL_LIMITS = {
+            default: 0.5,  // Most European countries
+            en: 0.5,       // English (default)
+            no: 0.2,       // Norway
+            se: 0.2,       // Sweden
+            dk: 0.5,       // Denmark
+            fi: 0.5,       // Finland
+            nl: 0.5,       // Netherlands
+            de: 0.5,       // Germany
+            es: 0.5        // Spain
+        };
+        
+        // Initialize i18next
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Initialize i18next
+            i18next
+                .use(i18nextHttpBackend)
+                .use(i18nextBrowserLanguageDetector)
+                .init({
+                    fallbackLng: DEFAULT_LANGUAGE,
+                    supportedLngs: AVAILABLE_LANGUAGES,
+                    backend: {
+                        loadPath: '/i18n/{{lng}}.json'
+                    },
+                    detection: {
+                        order: ['path', 'localStorage', 'navigator'],
+                        lookupFromPathIndex: 0
+                    },
+                    interpolation: {
+                        escapeValue: false
+                    }
+                }, function(err, t) {
+                    // Apply translations
+                    updateContent();
+                    
+                    // Set up language change event
+                    const languageSelect = document.getElementById('language-select');
+                    if (languageSelect) {
+                        languageSelect.value = getCurrentLanguage();
+                        languageSelect.addEventListener('change', function(e) {
+                            changeLanguage(e.target.value);
+                        });
+                    }
+                });
+        });
+        
+        // Get the current language from URL
+        function getCurrentLanguage() {
+            const pathSegments = window.location.pathname.split('/');
+            
+            // Check if the first path segment is a supported language code
+            const potentialLanguage = pathSegments[1] ? pathSegments[1].toLowerCase() : '';
+            
+            if (AVAILABLE_LANGUAGES.includes(potentialLanguage)) {
+                return potentialLanguage;
+            }
+            
+            return DEFAULT_LANGUAGE;
+        }
+        
+        // Change language and redirect
+        function changeLanguage(lang) {
+            const currentLang = getCurrentLanguage();
+            
+            if (lang === currentLang) {
+                return; // No need to change
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('i18nextLng', lang);
+            
+            // Redirect to the appropriate URL
+            if (lang === DEFAULT_LANGUAGE) {
+                window.location.href = '/';
+            } else {
+                window.location.href = '/' + lang;
+            }
+        }
+        
+        // Update content with translations
+        function updateContent() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const translation = i18next.t(key);
+                
+                if (translation) {
+                    if (element.tagName === 'INPUT' && element.type === 'button') {
+                        element.value = translation;
+                    } else if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = translation;
+                    } else {
+                        element.textContent = translation;
+                    }
+                }
+            });
+            
+            // Update page title and meta description
+            document.title = i18next.t('meta.title');
+            const metaDescription = document.querySelector('meta[name="description"]');
+            if (metaDescription) {
+                metaDescription.setAttribute('content', i18next.t('meta.description'));
+            }
+            
+            // Update language selector
+            const languageSelect = document.getElementById('language-select');
+            if (languageSelect) {
+                languageSelect.value = getCurrentLanguage();
+            }
+            
+            // Update legal limit text based on current language
+            updateLegalLimit(getCurrentLanguage());
+        }
+        
+        // Update legal limit text based on country/language
+        function updateLegalLimit(language) {
+            const legalLimitInfo = document.getElementById('legal-limit-info');
+            if (legalLimitInfo && legalLimitInfo.style.display !== 'none') {
+                legalLimitInfo.textContent = i18next.t('results.legalLimit');
+                window.legalLimit = LEGAL_LIMITS[language] || LEGAL_LIMITS.default;
+            }
+        }
     </script>
-  </body>
+    
+    <!-- Calculator Script -->
+    <script src="/js/calculator.js"></script>
+</body>
 </html>
