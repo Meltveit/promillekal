@@ -1,0 +1,56 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "http://bacometer.com/**",
+        "destination": "https://bacometer.com/**",
+        "type": 301
+      },
+      {
+        "source": "http://www.bacometer.com/**",
+        "destination": "https://bacometer.com/**",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/no/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/es/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/dk/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/se/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/fi/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/nl/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/de/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
