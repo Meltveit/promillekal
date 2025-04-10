@@ -428,3 +428,21 @@ footer {
 .copyright a:hover {
     color: white;
 }
+/* Ad Container */
+.ad-container {
+    margin: var(--spacing-xl) 0;
+    text-align: center;
+    min-height: 280px; /* Ensures enough space for ads */
+    background-color: var(--light-grey);
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    overflow: hidden; /* To prevent potential overflow issues */
+    position: relative; /* For proper positioning */
+}
+
+.ad-container p {
+    font-size: 0.8rem;
+    color: var(--grey-color);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+}
