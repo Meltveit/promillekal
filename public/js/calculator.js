@@ -445,9 +445,13 @@ function displayResults(bac, hoursToSober, minutesToSober, safeTime) {
     const resultsContainer = document.getElementById('results');
     resultsContainer.style.display = 'block';
     
+    // Convert BAC to permille format for display (multiplying by 10)
+    // BAC is calculated in a percentage format (0.08%) but displayed in permille (0.8‰)
+    const bacPermille = bac * 10;
+    
     // Set BAC value
-    document.getElementById('bac-result').textContent = bac.toFixed(2);
-    document.getElementById('bac-text').textContent = bac.toFixed(2);
+    document.getElementById('bac-result').textContent = bacPermille.toFixed(1);
+    document.getElementById('bac-text').textContent = bacPermille.toFixed(1);
     
     // Set time to sober
     document.getElementById('hours-to-sober').textContent = hoursToSober;
@@ -560,7 +564,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                 labels: chartLabels,
                 datasets: [{
                     label: i18next ? i18next.t('Blood Alcohol Content (‰)') : 'Blood Alcohol Content (‰)',
-                    data: dataPoints,
+                    data: dataPoints.map(value => value * 10), // Convert to permille for display
                     borderColor: '#4a6eb5',
                     backgroundColor: 'rgba(74, 110, 181, 0.1)',
                     fill: true,
@@ -588,7 +592,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                             text: i18next ? i18next.t('BAC (‰)') : 'BAC (‰)'
                         },
                         min: 0,
-                        suggestedMax: Math.max(...dataPoints) * 1.1
+                        suggestedMax: Math.max(...dataPoints) * 11 // Adjust max scale for permille values
                     }
                 },
                 plugins: {
@@ -596,8 +600,8 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                         annotations: {
                             legalLimit: {
                                 type: 'line',
-                                yMin: legalLimit,
-                                yMax: legalLimit,
+                                yMin: legalLimit * 10, // Convert to permille for display
+                                yMax: legalLimit * 10, // Convert to permille for display
                                 borderColor: '#dc3545',
                                 borderWidth: 2,
                                 borderDash: [5, 5],
@@ -612,7 +616,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
                     tooltip: {
                         callbacks: {
                             label: function(context) {
-                                return `BAC: ${context.parsed.y.toFixed(2)}‰`;
+                                return `BAC: ${(context.parsed.y).toFixed(1)}‰`;
                             }
                         }
                     }
@@ -622,7 +626,7 @@ function generateBACChart(drinks, currentTimeMinutes, currentBAC, metabolismRate
     } else {
         // If Chart.js is not available, display a simple text result
         const chartContainer = document.getElementById('bac-chart').parentElement;
-        chartContainer.innerHTML = `<p>${i18next ? i18next.t('Chart visualization not available. Your current BAC is') : 'Chart visualization not available. Your current BAC is'} ${currentBAC.toFixed(2)}‰.</p>`;
+        chartContainer.innerHTML = `<p>${i18next ? i18next.t('Chart visualization not available. Your current BAC is') : 'Chart visualization not available. Your current BAC is'} ${(currentBAC * 10).toFixed(1)}‰.</p>`;
     }
 }
 
